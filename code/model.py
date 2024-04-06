@@ -19,12 +19,14 @@ class PredOT(nn.Module):
         
     def forward(self, words):
         x = self.embed_word(words)
+        x = x.transpose(1,2)
         values = self.values_conv(x)
         weights = self.weights_conv(x)
-        weights = F.softmax(weights)
-        x_sum = torch.sum(values * weights, dim=-1)
-        x_max, _ = torch.max(values, dim=-1) # Max pooling
-        pf = torch.cat([x_sum, x_max], dim=1)
+        weights = F.softmax(weights, dim=-1)
+        xa = values * weights # attention weighted features
+        xa_mean = torch.mean( xa, dim=-1) # Mean pooling
+        xa_max, _ = torch.max( xa, dim=-1) # Max pooling
+        pf = torch.cat([ xa_mean, xa_max ], dim=1) #Concat features for regression
         
         for j in range(self.layer_output):
             pf = torch.relu(self.W_out[j](pf))

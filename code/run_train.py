@@ -8,7 +8,7 @@ import torch.optim as optim
 from torch import nn
 import torch.nn.functional as F
 from functions import *
-from model import DLEOTpH
+from model import PredOT
 import os
 import warnings
 import random
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     parser.add_argument('--param_dict_pkl', default = '../data/performances/default.pkl')
     args = parser.parse_args()
     
-    input_path, target_name, lr, batch_size, lr_decay, decay_interval, param_dict_pkl = \
+    input_path, lr, batch_size, lr_decay, decay_interval, param_dict_pkl = \
             str(args.input_path), float(args.lr), int(args.batch), \
             float(args.lr_decay), int(args.decay_interval) , str( args.param_dict_pkl )
     
@@ -124,21 +124,20 @@ if __name__ == "__main__":
         device = torch.device('cpu')
         print('We use CPU!')
     
-    seq_train = load_pkl2ndarr( os.path.join(input_path, target_name+'_train_proteins.pkl') )
-    target_train = load_pkl2ndarr( os.path.join(input_path, target_name+'_train_targets.pkl') )
+    seq_train = load_pkl2ndarr( os.path.join(input_path,'train_proteins.pkl') )
+    target_train = load_pkl2ndarr( os.path.join(input_path, 'train_normtopts.pkl') )
     datapack = [seq_train, target_train]
-    seq_test= load_pkl2ndarr( os.path.join(input_path, target_name+'_test_proteins.pkl') )
-    target_test= load_pkl2ndarr( os.path.join(input_path, target_name+'_test_targets.pkl') )
+    seq_test= load_pkl2ndarr( os.path.join(input_path, 'test_proteins.pkl') )
+    target_test= load_pkl2ndarr( os.path.join(input_path, 'test_normtopts.pkl') )
     test_data = [seq_test, target_test]
     train_data, dev_data = split_data( datapack, 0.1 )
     num_epochs = int( args.num_epoch )
     param_dict = load_pickle(param_dict_pkl)
     
-    dim, window, layer_cnn, layer_output = param_dict['dim'],param_dict['window'], \
-                                param_dict['layer_cnn'], param_dict['layer_out']
+    dim, window, layer_output = param_dict['dim'],param_dict['window'], param_dict['layer_out']
     
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
-    M = DLEOTpH( len(word_dict.keys())+1, dim, window, layer_cnn, layer_output)
+    M = PredOT( len(word_dict.keys())+1, dim, window, layer_output)
     M.to(device);
     
     train_result = train_eval( M , train_data, test_data, dev_data, device, lr, batch_size, lr_decay,\
@@ -146,12 +145,12 @@ if __name__ == "__main__":
     train_result['Epoch'] = list(np.arange(1,num_epochs+1))
     result_pd = pd.DataFrame( train_result )
     output_path = os.path.join(  '../data/performances/',os.path.basename(param_dict_pkl).split('.')[0] + \
-                               '_'+target_name+'_lr=' + str(lr) + '_batch='+str(batch_size)+ \
+                               '_lr=' + str(lr) + '_batch='+str(batch_size)+ \
                                '_lr_decay=' + str(lr_decay) + '_decay_interval=' + str(decay_interval) +'.csv' )
     
     result_pd.to_csv(output_path,index=None)
     
-    print('Done for ' + param_dict_pkl +'.')
+    print('Done.')
     
     
     
