@@ -16,7 +16,7 @@ input=../data/input/
 
 start_time=$(date +%s)
 
-python run_train.py --input_path ${input} 
+python run_train.py --input_path ${input} --lr 0.0005
 
 end_time=$(date +%s)
 elapsed=$(( end_time - start_time ))
