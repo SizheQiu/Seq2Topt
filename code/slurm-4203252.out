@@ -1,0 +1,12 @@
+Loading train/test data from ../data/input/ .
+Loading parameters from ../data/performances/default.pkl .
+We use CUDA!
+epoch: 0/30;  rmse test: 0.144815; r2 test: -0.009448
+epoch: 5/30;  rmse test: 0.136743; r2 test: 0.099941
+epoch: 10/30;  rmse test: 0.142292; r2 test: 0.02541
+epoch: 15/30;  rmse test: 0.139428; r2 test: 0.064255
+epoch: 20/30;  rmse test: 0.141947; r2 test: 0.030139
+epoch: 25/30;  rmse test: 0.140205; r2 test: 0.053799
+Done.
+87
+Done!
