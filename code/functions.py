@@ -6,6 +6,22 @@ from sklearn.metrics import r2_score, mean_absolute_error
 import torch
 import math
 from math import sqrt
+import requests
+from urllib import request
+import html
+
+def get_seq(ID):
+    url = "https://www.uniprot.org/uniprot/%s.fasta" % ID
+    try :
+        data = requests.get(url)
+        if data.status_code != 200:
+            seq = 'NaN'
+        else:
+            seq =  "".join(data.text.split("\n")[1:])
+    except :
+        seq = 'NaN'
+    return seq
+
 
 def get_rmse(x,y):
     rmse = sqrt(((x - y)**2).mean(axis=0))
