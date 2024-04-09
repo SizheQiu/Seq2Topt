@@ -8,12 +8,11 @@ class PredOT(nn.Module):
         self.embed_word = nn.Embedding(n_word, dim)
         self.values_conv = nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window)
         self.weights_conv = nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window)
-        self.batchnorm = nn.BatchNorm1d(6*dim)
         
-        self.W_out = nn.ModuleList([nn.Linear(6*dim, 6*dim) for _ in range(layer_output)])
+        self.W_out = nn.ModuleList([nn.Linear(3*dim, 3*dim) for _ in range(layer_output)])
         self.activations = nn.ModuleList([nn.LeakyReLU() for _ in range(layer_output)])
         self.dropout_layers = nn.ModuleList([nn.Dropout(dropout) for _ in range(layer_output)])
-        self.W_pred = nn.Linear(6*dim, 1)
+        self.W_pred = nn.Linear(3*dim, 1)
         
         self.dim = dim
         self.layer_output = layer_output
@@ -24,17 +23,12 @@ class PredOT(nn.Module):
         values = self.values_conv(x)
         weights = self.weights_conv(x)
         weights = F.softmax(weights, dim=-1)
-        xa = values * weights # attention weighted features
+        xa = values * weights # Attention weighted features
         xa_mean = torch.mean( xa, dim=-1) # Mean pooling
         xa_max, _ = torch.max( xa, dim=-1) # Max pooling
         xa_min,_ = torch.min(xa, dim=-1) # Min pooling
         
-        x_mean = torch.mean( values, dim=-1) # Mean pooling
-        x_max, _ = torch.max(values, dim=-1) # Max pooling
-        x_min, _ = torch.min(values, dim=-1) # Min pooling
-        
-        y = torch.cat([ xa_mean, xa_max, xa_min, x_mean, x_max, x_min ], dim=1) #Concat features for regression
-        y = self.batchnorm(y)
+        y = torch.cat([ xa_mean, xa_max, xa_min ], dim=1) #Concat features for regression
         
         for j in range(self.layer_output):
             y = self.W_out[j](y)
