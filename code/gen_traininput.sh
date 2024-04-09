@@ -1,0 +1,2 @@
+python gen_kmers.py --data_path ../data/train_os.csv --output_path ../data/input --task train --has_target True
+python gen_kmers.py --data_path ../data/test.csv --output_path ../data/input --task test --has_target True
