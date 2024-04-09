@@ -134,11 +134,11 @@ if __name__ == "__main__":
     num_epochs = int( args.num_epoch )
     param_dict = load_pickle(param_dict_pkl)
     
-    dim, window, dropout, layer_output = \
-            param_dict['dim'],param_dict['window'], param_dict['dropout'], param_dict['layer_out']
+    dim, window, dropout, layer_cnn, layer_output = \
+            param_dict['dim'],param_dict['window'],param_dict['dropout'],param_dict['layer_cnn'],param_dict['layer_out']
     
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
-    M = PredOT( len(word_dict.keys())+1, dim, window, dropout, layer_output)
+    M = PredOT( len(word_dict.keys())+1, dim, window, dropout, layer_cnn, layer_output)
     M.to(device);
     
     train_result = train_eval( M , train_data, test_data, dev_data, device, lr, batch_size, lr_decay,\
