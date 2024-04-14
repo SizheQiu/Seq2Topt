@@ -23,6 +23,41 @@ def get_seq(ID):
     return seq
 
 
+# def get_entry_ot( ec, brenda ):
+#     r = brenda.reactions.get_by_id(ec)
+#     all_data = r.temperature['optimum']
+#     result = []
+#     for i in range(len(all_data)):
+#         OT = all_data[i]['value']
+#         if '#' not in all_data[i]['meta']:
+#             continue
+#         p_refs = []
+#         if ';' in all_data[i]['meta']:
+#             meta_list = all_data[i]['meta'].split(';')
+#             for meta in meta_list:
+#                 p_refs += list( meta.split('#')[1].split(',') )
+                
+#         else:
+#             meta = all_data[i]['meta']
+#             p_refs += list( meta.split('#')[1].split(',') )
+            
+#         for ref in p_refs:
+#             if (ref in r.proteins) and (r.proteins[ref]['proteinID'] != ''):
+#                 p_id = r.proteins[ref]['proteinID']
+#                 p_id = p_id.replace('UniProt','').replace('SwissProt','').\
+#                 replace('swissprot','').replace('Uniprot','').replace('TrEMBL','').replace('GenBank','').strip()
+#                 if ' and ' in p_id:
+#                     p_ids = p_id.split(' and ')
+#                     for p_id in p_ids:
+#                         result.append( {'uniprot_id': p_id.strip(),'topt':float(OT)} )        
+#                 elif ' ' in p_id:
+#                     p_id = max( p_id.split(' '), key=len )
+#                     result.append( {'uniprot_id': p_id.strip(),'topt':float(OT)} )
+#                 else:
+#                     result.append( {'uniprot_id': p_id.strip(),'topt':float(OT)} )    
+#     return result
+
+
 def get_rmse(x,y):
     rmse = sqrt(((x - y)**2).mean(axis=0))
     return round(rmse, 6)
