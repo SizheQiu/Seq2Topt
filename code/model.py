@@ -13,7 +13,8 @@ class PredOT(nn.Module):
 #         self.weights_conv = nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window)
         
         self.W_out = nn.ModuleList([nn.Linear(3*dim, 3*dim) for _ in range(layer_output)])
-        self.dropout_layers = nn.ModuleList([nn.Dropout(dropout) for _ in range(layer_output)])
+#         self.dropout_layers = nn.ModuleList([nn.Dropout(dropout) for _ in range(layer_output)])
+        self.drop_layer = nn.Dropout(dropout)
         self.W_pred = nn.Linear(3*dim, 1)
         
         self.dim = dim
@@ -45,10 +46,11 @@ class PredOT(nn.Module):
         xa_min,_ = torch.min(xa, dim=-1) # Min pooling
         
         y = torch.cat([ xa_mean, xa_max, xa_min ], dim=1) #Concat features for regression
+        y = self.drop_layer(y) # dropout
         
         for j in range(self.layer_output):
             y =  F.leaky_relu( self.W_out[j](y) )
-            y = self.dropout_layers[j](y)
+#             y = self.dropout_layers[j](y)
             
         return self.W_pred(y)
             
