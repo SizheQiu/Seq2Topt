@@ -7,13 +7,10 @@ class PredOT(nn.Module):
         super(PredOT, self).__init__()
         self.embed_word = nn.Embedding(n_word, dim)
         self.Vconvs = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(layer_cnn)])
-        self.Wconvs = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(layer_cnn)])  
-        
+        self.Wconvs = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(layer_cnn)])    
 #         self.values_conv = nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window)
 #         self.weights_conv = nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window)
-        
         self.W_out = nn.ModuleList([nn.Linear(2*dim, 2*dim) for _ in range(layer_output)])
-#         self.dropout_layers = nn.ModuleList([nn.Dropout(dropout) for _ in range(layer_output)])
         self.W_pred = nn.Linear(2*dim, 1)
         
         self.dim = dim
@@ -23,13 +20,13 @@ class PredOT(nn.Module):
         
     def get_values(self,x):
         for i in range(self.layer_cnn):
-            x = F.leaky_relu( self.Vconvs[i](x) )
+            x = self.Vconvs[i](x)
         return x
     
     
     def get_weights(self,x):
         for i in range(self.layer_cnn):
-            x = F.leaky_relu( self.Wconvs[i](x) )
+            x = self.Wconvs[i](x)
         return x
     
     
@@ -47,7 +44,6 @@ class PredOT(nn.Module):
         
         for j in range(self.layer_output):
             y =  F.leaky_relu( self.W_out[j](y) )
-#             y = self.dropout_layers[j](y)
             
         return self.W_pred(y)
             

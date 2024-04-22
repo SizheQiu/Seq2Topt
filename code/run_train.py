@@ -50,8 +50,8 @@ def train_eval(model, data_train, data_test, data_dev, device, lr, batch_size, l
         train_result['r2_train'].append( get_r2( targets, predictions) )
         train_result['mae_train'].append( get_mae( targets, predictions) )
         
-        rmse_test, r2_test, mae_test = test(model, data_test,  batch_size, device)
-        rmse_dev, r2_dev, mae_dev = test(model, data_dev,  batch_size, device)
+        rmse_test, r2_test, mae_test = test(model, data_test, device)
+        rmse_dev, r2_dev, mae_dev = test(model, data_dev, device)
         train_result['rmse_test'].append(rmse_test); train_result['r2_test'].append(r2_test); train_result['mae_test'].append(mae_test);
         train_result['rmse_dev'].append(rmse_dev); train_result['r2_dev'].append(r2_dev); train_result['mae_dev'].append(mae_dev);
         
@@ -62,17 +62,13 @@ def train_eval(model, data_train, data_test, data_dev, device, lr, batch_size, l
         
     return train_result
             
-def test(model, data_test, batch_size, device):
+def test(model, data_test, device):
     model.eval()
-    predictions, targets = [],[]
-    for i in range(math.ceil(len(data_test[0]) / batch_size)):
-        batch_data = [data_test[di][i * batch_size: (i + 1) * batch_size] for di in range(len(data_test))]
-        words, target_values = data2tensor( batch_data, True, device)
-        with torch.no_grad():
-            preds = model( words )
-        predictions += preds.cpu().detach().numpy().reshape(-1).tolist()
-        targets += target_values.cpu().numpy().reshape(-1).tolist()
-
+    words, target_values = data2tensor( data_test, True, device)
+    with torch.no_grad():
+        preds = model( words )
+    predictions = preds.cpu().detach().numpy().reshape(-1).tolist()
+    targets = target_values.cpu().numpy().reshape(-1).tolist()
     predictions = np.array(predictions)
     targets = np.array(targets)
     rmse = get_rmse( targets, predictions)
