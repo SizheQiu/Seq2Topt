@@ -7,16 +7,17 @@ class PredOT(nn.Module):
     def __init__(self, device, window, dropout, layer_cnn, layer_output):
         super(PredOT, self).__init__()
         dim = 1280
+        self.device = device
+        self.dim = dim
+        self.layer_output = layer_output
+        self.layer_cnn = layer_cnn
+        
         self.esm2_model, self.esm2_batch_converter = self.load_ESM2_model()
         self.Vconvs = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(layer_cnn)])
         self.Wconvs = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(layer_cnn)])    
         self.W_out = nn.ModuleList([nn.Linear(2*dim, 2*dim) for _ in range(layer_output)])
         self.W_pred = nn.Linear(2*dim, 1)
         
-        self.device = device
-        self.dim = dim
-        self.layer_output = layer_output
-        self.layer_cnn = layer_cnn
         
     def load_ESM2_model(self):
         model, alphabet = esm.pretrained.esm2_t33_650M_UR50D()
