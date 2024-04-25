@@ -22,6 +22,14 @@ def get_seq(ID):
         seq = 'NaN'
     return seq
 
+def split_table( table, ratio ):
+    idx=list(table.index)
+    np.random.shuffle(idx)
+    num_split = int( len(idx) * ratio)
+    idx_test, idx_train = idx[:num_split], idx[num_split:]
+    train_table = (table.iloc[idx_train]).reset_index().drop(['index'],axis=1)
+    test_table = (table.iloc[idx_test]).reset_index().drop(['index'],axis=1)
+    return train_table,test_table
 
 # def get_entry_ot( ec, brenda ):
 #     r = brenda.reactions.get_by_id(ec)

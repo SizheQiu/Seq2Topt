@@ -14,7 +14,7 @@ import warnings
 import random
 
 
-def train_eval(model, data_train, data_test, data_dev, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
+def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
     criterion = F.mse_loss
     optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=0, amsgrad=True)
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size= decay_interval, gamma=lr_decay)
@@ -32,13 +32,14 @@ def train_eval(model, data_train, data_test, data_dev, device, lr, batch_size, l
         np.random.shuffle(idx)
         model.train()
         predictions, targets = [],[]
-        for i in range(math.ceil( len(data_train[0]) / min_size )):
-            batch_data = [data_train[di][idx[ i* min_size: (i + 1) * min_size]] for di in range(len(data_train))]
-            words, target_values = data2tensor(batch_data, True, device)
-            pred = model( words )
+        for i in range(math.ceil( len(train_pack[0]) / min_size )):
+            batch_data = [train_pack[di][idx[ i* min_size: (i + 1) * min_size]] for di in range(len(train_pack))]
+            ids, seqs, topts = batch_data
+            target_values = torch.FloatTensor( np.array( [ np.array([topt]) for topt in topts ] ) ).to(device)
+            pred = model( ids, seqs )
             loss = criterion(pred.float(), target_values.float())
             predictions += pred.cpu().detach().numpy().reshape(-1).tolist()
-            targets += target_values.cpu().numpy().reshape(-1).tolist()
+            targets += list(target_values)
             loss.backward()
             if i % div_min == 0 and i != 0:    
                 optimizer.step()
@@ -50,8 +51,8 @@ def train_eval(model, data_train, data_test, data_dev, device, lr, batch_size, l
         train_result['r2_train'].append( get_r2( targets, predictions) )
         train_result['mae_train'].append( get_mae( targets, predictions) )
         
-        rmse_test, r2_test, mae_test = test(model, data_test, device)
-        rmse_dev, r2_dev, mae_dev = test(model, data_dev, device)
+        rmse_test, r2_test, mae_test = test(model, test_pack )
+        rmse_dev, r2_dev, mae_dev = test(model, dev_pack )
         train_result['rmse_test'].append(rmse_test); train_result['r2_test'].append(r2_test); train_result['mae_test'].append(mae_test);
         train_result['rmse_dev'].append(rmse_dev); train_result['r2_dev'].append(r2_dev); train_result['mae_dev'].append(mae_dev);
         
@@ -62,15 +63,14 @@ def train_eval(model, data_train, data_test, data_dev, device, lr, batch_size, l
         
     return train_result
             
-def test(model, data_test, device):
+def test(model, test_pack ):
     model.eval()
-    words, target_values = data2tensor( data_test, True, device)
+    ids, seqs, targets = test_pack
     with torch.no_grad():
-        preds = model( words )
+        preds = model( ids, seqs )
     predictions = preds.cpu().detach().numpy().reshape(-1).tolist()
-    targets = target_values.cpu().numpy().reshape(-1).tolist()
+    targets =  np.array(list(targets))
     predictions = np.array(predictions)
-    targets = np.array(targets)
     rmse = get_rmse( targets, predictions)
     r2 = get_r2( targets, predictions)
     mae = get_mae( targets, predictions)
@@ -90,7 +90,8 @@ def split_data( data, ratio=0.1):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--input_path', required = True)
+    parser.add_argument('--train_path', required = True)
+    parser.add_argument('--test_path', required = True)
     parser.add_argument('--lr', default = 0.001, type=float )
     parser.add_argument('--batch', default = 32 , type=int )
     parser.add_argument('--lr_decay', default = 0.5, type=float )
@@ -99,19 +100,16 @@ if __name__ == "__main__":
     parser.add_argument('--param_dict_pkl', default = '../data/performances/default.pkl')
     args = parser.parse_args()
     
-    input_path, lr, batch_size, lr_decay, decay_interval, param_dict_pkl = \
-            str(args.input_path), float(args.lr), int(args.batch), \
+    train_path, test_path, lr, batch_size, lr_decay, decay_interval, param_dict_pkl = \
+            str(args.train_path), str(args.test_path), float(args.lr), int(args.batch), \
             float(args.lr_decay), int(args.decay_interval) , str( args.param_dict_pkl )
     
-    print('Loading train/test data from %s .' % input_path)
-    if not ( os.path.isdir(input_path) ):
-        raise SystemExit('Directory %s does not exist!' % input_path )
-        
-    print('Loading parameters from %s .' % param_dict_pkl)
-    if not ( os.path.exists(param_dict_pkl) ):
-        raise SystemExit('File %s does not exist!' % param_dict_pkl )
-        
-    word_dict = load_pickle(   '../data/word_dict.pkl' )
+    train_data = pd.read_csv(train_path)
+    test_data = pd.read_csv(test_path)
+    train_data, dev_data = split_table( train_data, 0.1 )
+    train_pack = [list(train_data.uniprot_id),list(train_data.sequence),list(train_data.topt)];
+    test_pack = [list(test_data.uniprot_id),list(test_data.sequence),list(test_data.topt)];
+    dev_pack = [list(dev_data.uniprot_id),list(dev_data.sequence),list(dev_data.topt)];
 
     if torch.cuda.is_available():
         device = torch.device('cuda')
@@ -120,24 +118,18 @@ if __name__ == "__main__":
         device = torch.device('cpu')
         print('We use CPU!')
     
-    seq_train = load_pkl2ndarr( os.path.join(input_path,'train_proteins.pkl') )
-    target_train = load_pkl2ndarr( os.path.join(input_path, 'train_normtopts.pkl') )
-    datapack = [seq_train, target_train]
-    seq_test= load_pkl2ndarr( os.path.join(input_path, 'test_proteins.pkl') )
-    target_test= load_pkl2ndarr( os.path.join(input_path, 'test_normtopts.pkl') )
-    test_data = [seq_test, target_test]
-    train_data, dev_data = split_data( datapack, 0.1 )
+    
     num_epochs = int( args.num_epoch )
     param_dict = load_pickle(param_dict_pkl)
     
-    dim, window, dropout, layer_cnn, layer_output = \
-            param_dict['dim'],param_dict['window'],param_dict['dropout'],param_dict['layer_cnn'],param_dict['layer_out']
+    window, dropout, layer_cnn, layer_output = \
+            param_dict['window'],param_dict['dropout'],param_dict['layer_cnn'],param_dict['layer_out']
     
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
-    M = PredOT( len(word_dict.keys())+1, dim, window, dropout, layer_cnn, layer_output)
+    M = PredOT( device, window, dropout, layer_cnn, layer_output)
     M.to(device);
     
-    train_result = train_eval( M , train_data, test_data, dev_data, device, lr, batch_size, lr_decay,\
+    train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
                    decay_interval,  num_epochs )
     train_result['Epoch'] = list(np.arange(1,num_epochs+1))
     result_pd = pd.DataFrame( train_result )
