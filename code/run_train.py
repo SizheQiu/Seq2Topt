@@ -18,7 +18,7 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
     criterion = F.mse_loss
     optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=0, amsgrad=True)
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size= decay_interval, gamma=lr_decay)
-    idx = np.arange(len(data_train[0]))
+    idx = np.arange(len(train_pack[0]))
     
     min_size = 4
     if batch_size > min_size:
@@ -107,9 +107,11 @@ if __name__ == "__main__":
     train_data = pd.read_csv(train_path)
     test_data = pd.read_csv(test_path)
     train_data, dev_data = split_table( train_data, 0.1 )
-    train_pack = [list(train_data.uniprot_id),list(train_data.sequence),list(train_data.topt)];
-    test_pack = [list(test_data.uniprot_id),list(test_data.sequence),list(test_data.topt)];
-    dev_pack = [list(dev_data.uniprot_id),list(dev_data.sequence),list(dev_data.topt)];
+    
+    T_max, T_min = 120, 0
+    train_pack = [list(train_data.uniprot_id),list(train_data.sequence), rescale_targets(list(train_data.topt), T_max, T_min)];
+    test_pack = [list(test_data.uniprot_id),list(test_data.sequence), rescale_targets(list(test_data.topt), T_max, T_min)];
+    dev_pack = [list(dev_data.uniprot_id),list(dev_data.sequence), rescale_targets(list(dev_data.topt), T_max, T_min)];
 
     if torch.cuda.is_available():
         device = torch.device('cuda')
