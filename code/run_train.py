@@ -109,9 +109,12 @@ if __name__ == "__main__":
     train_data, dev_data = split_table( train_data, 0.1 )
     
     T_max, T_min = 120, 0
-    train_pack = [list(train_data.uniprot_id),list(train_data.sequence), rescale_targets(list(train_data.topt), T_max, T_min)];
-    test_pack = [list(test_data.uniprot_id),list(test_data.sequence), rescale_targets(list(test_data.topt), T_max, T_min)];
-    dev_pack = [list(dev_data.uniprot_id),list(dev_data.sequence), rescale_targets(list(dev_data.topt), T_max, T_min)];
+    train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence), \
+                  np.array( rescale_targets(list(train_data.topt), T_max, T_min)) ];
+    test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), \
+                 np.array( rescale_targets(list(test_data.topt), T_max, T_min)) ];
+    dev_pack = [np.array(dev_data.uniprot_id), np.array(dev_data.sequence), \
+                np.array( rescale_targets(list(dev_data.topt), T_max, T_min)) ];
 
     if torch.cuda.is_available():
         device = torch.device('cuda')
