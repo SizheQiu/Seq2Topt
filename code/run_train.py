@@ -39,7 +39,7 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
             pred = model( ids, seqs )
             loss = criterion(pred.float(), target_values.float())
             predictions += pred.cpu().detach().numpy().reshape(-1).tolist()
-            targets += list(target_values)
+            targets += target_values.cpu().numpy().reshape(-1).tolist()
             loss.backward()
             if i % div_min == 0 and i != 0:    
                 optimizer.step()
@@ -68,9 +68,8 @@ def test(model, test_pack ):
     ids, seqs, targets = test_pack
     with torch.no_grad():
         preds = model( ids, seqs )
-    predictions = preds.cpu().detach().numpy().reshape(-1).tolist()
-    targets =  np.array(list(targets))
-    predictions = np.array(predictions)
+    predictions = np.array( preds.cpu().detach().numpy().reshape(-1).tolist() )
+    targets =  np.array( list(targets) )
     rmse = get_rmse( targets, predictions)
     r2 = get_r2( targets, predictions)
     mae = get_mae( targets, predictions)
