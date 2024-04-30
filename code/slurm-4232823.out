@@ -1,0 +1,29 @@
+We use CUDA!
+Traceback (most recent call last):
+  File "run_train.py", line 136, in <module>
+    train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
+  File "run_train.py", line 54, in train_eval
+    rmse_test, r2_test, mae_test = test(model, test_pack )
+  File "run_train.py", line 70, in test
+    preds = model( ids, seqs )
+  File "/apps/system/easybuild/software/PyTorch/1.7.1-fosscuda-2020b/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/data/engs-deep-learning-biosystem/bras5181/projects/PredOT/code/model.py", line 52, in forward
+    emb = self.get_ESM2_embeddings(ids, seqs)
+  File "/data/engs-deep-learning-biosystem/bras5181/projects/PredOT/code/model.py", line 33, in get_ESM2_embeddings
+    emb = self.esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
+  File "/apps/system/easybuild/software/PyTorch/1.7.1-fosscuda-2020b/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/bras5181/.local/lib/python3.8/site-packages/esm/model/esm2.py", line 112, in forward
+    x, attn = layer(
+  File "/apps/system/easybuild/software/PyTorch/1.7.1-fosscuda-2020b/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/bras5181/.local/lib/python3.8/site-packages/esm/modules.py", line 125, in forward
+    x, attn = self.self_attn(
+  File "/apps/system/easybuild/software/PyTorch/1.7.1-fosscuda-2020b/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/bras5181/.local/lib/python3.8/site-packages/esm/multihead_attention.py", line 357, in forward
+    attn_weights = torch.bmm(q, k.transpose(1, 2))
+RuntimeError: CUDA out of memory. Tried to allocate 65.79 GiB (GPU 0; 44.48 GiB total capacity; 17.10 GiB already allocated; 23.35 GiB free; 20.07 GiB reserved in total by PyTorch)
+566
+Done!

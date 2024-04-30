@@ -5,7 +5,7 @@
 #SBATCH --clusters=htc
 #SBATCH --time=10:00:00 
 #SBATCH --partition=short
-#SBATCH --gres=gpu:v100:1
+#SBATCH --gres=gpu:rtx8000:1
 
 
 
