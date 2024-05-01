@@ -35,7 +35,10 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         for i in range(math.ceil( len(train_pack[0]) / min_size )):
             batch_data = [train_pack[di][idx[ i* min_size: (i + 1) * min_size]] for di in range(len(train_pack))]
             ids, seqs, topts = batch_data
-            target_values = torch.FloatTensor( np.array( [ np.array([topt]) for topt in topts ] ) ).to(device)
+            target_values = torch.FloatTensor( np.array( [ np.array([topt]) for topt in topts ] ) )
+            target_values = target_values.half()#float16
+            target_values = target_values.to(device)
+            
             pred = model( ids, seqs )
             loss = criterion(pred.float(), target_values.float())
             predictions += pred.cpu().detach().numpy().reshape(-1).tolist()
@@ -131,6 +134,7 @@ if __name__ == "__main__":
     
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     M = PredOT( device, window, dropout, layer_cnn, layer_output)
+    M = M.half() #float16
     M.to(device);
     
     train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\

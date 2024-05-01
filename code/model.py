@@ -21,6 +21,7 @@ class PredOT(nn.Module):
         
     def load_ESM2_model(self):
         model, alphabet = esm.pretrained.esm2_t6_8M_UR50D() # 8M params, 6 layers
+        model = model.half()#float16
         model = model.to(self.device)
         batch_converter = alphabet.get_batch_converter()
         return model, batch_converter
@@ -28,6 +29,7 @@ class PredOT(nn.Module):
     def get_ESM2_embeddings(self, ids, seqs):
         data = [(ids[i], seqs[i]) for i in range(len(ids))]
         batch_labels, batch_strs, batch_tokens = self.esm2_batch_converter(data)
+        batch_tokens = batch_tokens.half()#float16
         batch_tokens = batch_tokens.to(device=self.device, non_blocking=True)
         with torch.no_grad():
             emb = self.esm2_model(batch_tokens, repr_layers=[6], return_contacts=False)
