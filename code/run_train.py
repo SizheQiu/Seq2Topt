@@ -131,8 +131,8 @@ if __name__ == "__main__":
     
     window, dropout, layer_cnn, layer_output = \
             param_dict['window'],param_dict['dropout'],param_dict['layer_cnn'],param_dict['layer_out']
-    
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
+    
     M = PredOT( device, window, dropout, layer_cnn, layer_output)
     M = M.half() #float16
     M.to(device);
