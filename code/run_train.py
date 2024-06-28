@@ -69,8 +69,8 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         train_result['r2_train'].append( get_r2( targets, predictions) )
         train_result['mae_train'].append( get_mae( targets, predictions) )
         
-        rmse_test, r2_test, mae_test = test(model, test_pack )
-        rmse_dev, r2_dev, mae_dev = test(model, dev_pack )
+        rmse_test, r2_test, mae_test = test(model, test_pack, batch_size, device )
+        rmse_dev, r2_dev, mae_dev = test(model, dev_pack, batch_size, device )
         train_result['rmse_test'].append(rmse_test); train_result['r2_test'].append(r2_test); train_result['mae_test'].append(mae_test);
         train_result['rmse_dev'].append(rmse_dev); train_result['r2_dev'].append(r2_dev); train_result['mae_dev'].append(mae_dev);
         
@@ -81,16 +81,38 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         
     return train_result
             
-def test(model, test_pack ):
+def test(model, test_pack,  batch_size, device ):
+    #Load esm2
+    esm2_model, alphabet = esm.pretrained.esm2_t6_8M_UR50D() # 6 layers
+    esm2_model = esm2_model.to(device)
+    esm2_batch_converter = alphabet.get_batch_converter()
+    
     model.eval()
+    predictions, target_values = [],[]
     ids, seqs, targets = test_pack
-    with torch.no_grad():
-        preds = model( ids, seqs )
-    predictions = np.array( preds.cpu().detach().numpy().reshape(-1).tolist() )
-    targets =  np.array( list(targets) )
-    rmse = get_rmse( targets, predictions)
-    r2 = get_r2( targets, predictions)
-    mae = get_mae( targets, predictions)
+    for i in range(math.ceil( len(train_pack[0]) / batch_size )):
+        batch_data = [test_pack[di][idx[ i* batch_size: (i + 1) * batch_size]] for di in range(len(test_pack))]
+        ids, seqs, targets = batch_data
+        #Generate emb
+        input_data = [(ids[i], seqs[i]) for i in range(len(ids))]
+        batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
+        batch_tokens = batch_tokens.to(device=device, non_blocking=True)
+        with torch.no_grad():
+            emb = esm2_model(batch_tokens, repr_layers=[6], return_contacts=False)
+        emb = emb["representations"][6]
+        emb = emb.transpose(1,2) # (batch, features, seqlen)
+        emb = emb.to(device)
+        with torch.no_grad():
+            preds = model( emb )
+        predictions += preds.cpu().detach().numpy().reshape(-1).tolist()
+        target_values += list(targets)  
+            
+    
+    predictions = np.array(predictions)
+    target_values = np.array(target_values)
+    rmse = get_rmse( target_values, predictions)
+    r2 = get_r2( target_values, predictions)
+    mae = get_mae( target_values, predictions)
     return rmse, r2, mae
     
 
