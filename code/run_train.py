@@ -12,9 +12,15 @@ from model import PredOT
 import os
 import warnings
 import random
+import esm
 
 
 def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
+    #Load esm2
+    esm2_model, alphabet = esm.pretrained.esm2_t6_8M_UR50D() # 6 layers
+    esm2_model = esm2_model.to(device)
+    esm2_batch_converter = alphabet.get_batch_converter()
+    
     criterion = F.mse_loss
     optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=0, amsgrad=True)
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size= decay_interval, gamma=lr_decay)
@@ -35,11 +41,20 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         for i in range(math.ceil( len(train_pack[0]) / min_size )):
             batch_data = [train_pack[di][idx[ i* min_size: (i + 1) * min_size]] for di in range(len(train_pack))]
             ids, seqs, topts = batch_data
+            #Generate emb
+            input_data = [(ids[i], seqs[i]) for i in range(len(ids))]
+            batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
+            batch_tokens = batch_tokens.to(device=device, non_blocking=True)
+            with torch.no_grad():
+                emb = esm2_model(batch_tokens, repr_layers=[6], return_contacts=False)
+            emb = emb["representations"][6]
+            emb = emb.transpose(1,2) # (batch, features, seqlen)
+            emb = emb.to(device)
+         
             target_values = torch.FloatTensor( np.array( [ np.array([topt]) for topt in topts ] ) )
-            target_values = target_values.half()#float16
             target_values = target_values.to(device)
             
-            pred = model( ids, seqs )
+            pred = model( emb )
             loss = criterion(pred.float(), target_values.float())
             predictions += pred.cpu().detach().numpy().reshape(-1).tolist()
             targets += target_values.cpu().numpy().reshape(-1).tolist()
@@ -133,8 +148,8 @@ if __name__ == "__main__":
             param_dict['window'],param_dict['dropout'],param_dict['layer_cnn'],param_dict['layer_out']
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     
-    M = PredOT( device, window, dropout, layer_cnn, layer_output)
-    M = M.half() #float16
+    dim=320  # esm2_t6_8M_UR50D
+    M = PredOT( dim, device, window, dropout, layer_cnn, layer_output)
     M.to(device);
     
     train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\

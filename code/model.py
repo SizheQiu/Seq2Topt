@@ -1,41 +1,39 @@
 import torch
-import esm
 import torch.nn as nn
 import torch.nn.functional as F
 
 class PredOT(nn.Module):
-    def __init__(self, device, window, dropout, layer_cnn, layer_output):
+    def __init__(self, dim, device, window, dropout, layer_cnn, layer_output):
         super(PredOT, self).__init__()
-        dim = 1280
         self.device = device
         self.dim = dim
         self.layer_output = layer_output
         self.layer_cnn = layer_cnn
         
-        self.esm2_model, self.esm2_batch_converter = self.load_ESM2_model()
+#         self.esm2_model, self.esm2_batch_converter = self.load_ESM2_model()
         self.Vconvs = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(layer_cnn)])
         self.Wconvs = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(layer_cnn)])    
         self.W_out = nn.ModuleList([nn.Linear(2*dim, 2*dim) for _ in range(layer_output)])
         self.W_pred = nn.Linear(2*dim, 1)
         
         
-    def load_ESM2_model(self):
-        model, alphabet = esm.pretrained.esm2_t33_650M_UR50D() # 33 layers
-        model = model.half() # float16
-        model = model.to(self.device)
-        batch_converter = alphabet.get_batch_converter()
-        return model, batch_converter
+#     def load_ESM2_model(self):
+#         model, alphabet = esm.pretrained.esm2_t33_650M_UR50D() # 33 layers
+#         model = model.half() # float16
+#         model = model.to(self.device)
+#         batch_converter = alphabet.get_batch_converter()
+#         return model, batch_converter
     
-    def get_ESM2_embeddings(self, ids, seqs):
-        data = [(ids[i], seqs[i]) for i in range(len(ids))]
-        batch_labels, batch_strs, batch_tokens = self.esm2_batch_converter(data)
-        batch_tokens = batch_tokens.to(device=self.device, non_blocking=True)
-        with torch.no_grad():
-            emb = self.esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
-        emb = emb["representations"][33]
-        emb = emb.transpose(1,2) # (batch, features, seqlen)
-        emb = emb.to(self.device)
-        return emb
+#     def get_ESM2_embeddings(self, ids, seqs):
+#         data = [(ids[i], seqs[i]) for i in range(len(ids))]
+#         batch_labels, batch_strs, batch_tokens = self.esm2_batch_converter(data)
+#         batch_tokens = batch_tokens.to(device=self.device, non_blocking=True)
+#         with torch.no_grad():
+#             emb = self.esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
+#         emb = emb["representations"][33]
+#         emb = emb.transpose(1,2) # (batch, features, seqlen)
+#         emb = emb.to(self.device)
+#         return emb
     
     def get_values(self,x):
         for i in range(self.layer_cnn):
@@ -49,8 +47,7 @@ class PredOT(nn.Module):
         return x
     
     
-    def forward(self, ids, seqs):
-        emb = self.get_ESM2_embeddings(ids, seqs)
+    def forward(self, emb):
         values = self.get_values(emb) # CNN
         weights = self.get_weights(emb) # CNN
         weights = F.softmax(weights, dim=-1)
