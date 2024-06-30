@@ -8,7 +8,7 @@ import torch.optim as optim
 from torch import nn
 import torch.nn.functional as F
 from functions import *
-from model import PredOT
+from model import MultiAttModel
 import os
 import warnings
 import random
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr_decay', default = 0.5, type=float )
     parser.add_argument('--decay_interval', default = 10, type=int )
     parser.add_argument('--num_epoch', default = 30, type=int )
-    parser.add_argument('--param_dict_pkl', default = '../data/performances/default.pkl')
+    parser.add_argument('--param_dict_pkl', default = '../data/performances/default_multiA.pkl')
     args = parser.parse_args()
     
     train_path, test_path, lr, batch_size, lr_decay, decay_interval, param_dict_pkl = \
@@ -166,12 +166,12 @@ if __name__ == "__main__":
     num_epochs = int( args.num_epoch )
     param_dict = load_pickle(param_dict_pkl)
     
-    window, dropout, layer_cnn, layer_output = \
-            param_dict['window'],param_dict['dropout'],param_dict['layer_cnn'],param_dict['layer_out']
+    window, dropout, n_head, n_RD = \
+            param_dict['window'],param_dict['dropout'],param_dict['n_head'],param_dict['n_RD']
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     
     dim=320  # esm2_t6_8M_UR50D
-    M = PredOT( dim, device, window, dropout, layer_cnn, layer_output)
+    M = MultiAttModel( dim, device, window, n_head, dropout, n_RD)
     M.to(device);
     
     train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
