@@ -86,6 +86,7 @@ class MultiAttModel(nn.Module):
     def __init__(self, dim, device, window, n_head, dropout, n_RD):
         super(MultiAttModel, self).__init__()
         self.n_RD = n_RD
+        self.n_head = n_head
         self.cnn_v = nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window)
         self.W_cnns = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(n_head)])
         self.batchnorm = nn.BatchNorm1d(2*n_head*dim)
@@ -95,7 +96,7 @@ class MultiAttModel(nn.Module):
         
     def forward(self, emb):
         values = self.cnn_v(emb)
-        for i in range( n_head ):
+        for i in range( self.n_head ):
             weights = F.softmax(self.W_cnns[i](emb), dim=-1)
             x_sum = torch.sum(values * weights, dim=-1) # Sum pooling
             x_max,_ = torch.max(values * weights, dim=-1) # Max pooling
