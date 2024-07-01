@@ -89,9 +89,8 @@ def test(model, test_pack,  batch_size, device ):
     
     model.eval()
     predictions, target_values = [],[]
-    ids, seqs, targets = test_pack
-    for i in range(math.ceil( len(train_pack[0]) / batch_size )):
-        batch_data = [test_pack[di][idx[ i* batch_size: (i + 1) * batch_size]] for di in range(len(test_pack))]
+    for i in range(math.ceil( len(test_pack[0]) / batch_size )):
+        batch_data = [test_pack[di][i * batch_size: (i + 1) * batch_size] for di in range(len(test_pack))]
         ids, seqs, targets = batch_data
         #Generate emb
         input_data = [(ids[i], seqs[i]) for i in range(len(ids))]

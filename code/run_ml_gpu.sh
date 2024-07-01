@@ -17,7 +17,7 @@ test_path=../data/test.csv
 
 start_time=$(date +%s)
 
-python run_train.py --train_path ${train_path} --test_path ${test_path} --lr 0.0005
+python run_train.py --train_path ${train_path} --test_path ${test_path}
 
 end_time=$(date +%s)
 elapsed=$(( end_time - start_time ))
