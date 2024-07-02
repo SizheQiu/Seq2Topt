@@ -1,0 +1,10 @@
+We use CUDA!
+epoch: 0/30;  rmse test: 0.217059; r2 test: -0.955764
+epoch: 5/30;  rmse test: 0.198736; r2 test: -0.639519
+epoch: 10/30;  rmse test: 0.149233; r2 test: 0.075529
+epoch: 15/30;  rmse test: 0.126553; r2 test: 0.335173
+epoch: 20/30;  rmse test: 0.117301; r2 test: 0.428833
+epoch: 25/30;  rmse test: 0.116078; r2 test: 0.440678
+Done.
+1637
+Done!
