@@ -17,7 +17,7 @@ import esm
 
 def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
     #Load esm2
-    esm2_model, alphabet = esm.pretrained.esm2_t6_8M_UR50D() # 6 layers
+    esm2_model, alphabet = esm.pretrained.esm2_t33_650M_UR50D # 33 layers
     esm2_model = esm2_model.to(device)
     esm2_batch_converter = alphabet.get_batch_converter()
     
@@ -46,8 +46,8 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
             batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
             batch_tokens = batch_tokens.to(device=device, non_blocking=True)
             with torch.no_grad():
-                emb = esm2_model(batch_tokens, repr_layers=[6], return_contacts=False)
-            emb = emb["representations"][6]
+                emb = esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
+            emb = emb["representations"][33]
             emb = emb.transpose(1,2) # (batch, features, seqlen)
             emb = emb.to(device)
          
@@ -83,7 +83,7 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
             
 def test(model, test_pack,  batch_size, device ):
     #Load esm2
-    esm2_model, alphabet = esm.pretrained.esm2_t6_8M_UR50D() # 6 layers
+    esm2_model, alphabet = esm.pretrained.esm2_t33_650M_UR50D # 33 layers
     esm2_model = esm2_model.to(device)
     esm2_batch_converter = alphabet.get_batch_converter()
     
@@ -97,8 +97,8 @@ def test(model, test_pack,  batch_size, device ):
         batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
         batch_tokens = batch_tokens.to(device=device, non_blocking=True)
         with torch.no_grad():
-            emb = esm2_model(batch_tokens, repr_layers=[6], return_contacts=False)
-        emb = emb["representations"][6]
+            emb = esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
+        emb = emb["representations"][33]
         emb = emb.transpose(1,2) # (batch, features, seqlen)
         emb = emb.to(device)
         with torch.no_grad():
@@ -128,19 +128,23 @@ def split_data( data, ratio=0.1):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
+    parser.add_argument('--task',choices=['topt','pHopt'], required = True)
     parser.add_argument('--train_path', required = True)
     parser.add_argument('--test_path', required = True)
-    parser.add_argument('--lr', default = 0.001, type=float )
+    parser.add_argument('--lr', default = 0.0005, type=float )
     parser.add_argument('--batch', default = 32 , type=int )
     parser.add_argument('--lr_decay', default = 0.5, type=float )
     parser.add_argument('--decay_interval', default = 10, type=int )
     parser.add_argument('--num_epoch', default = 30, type=int )
-    parser.add_argument('--param_dict_pkl', default = '../data/performances/default_multiA.pkl')
+    parser.add_argument('--param_dict_pkl', default = '../data/performances/default.pkl')
     args = parser.parse_args()
     
     train_path, test_path, lr, batch_size, lr_decay, decay_interval, param_dict_pkl = \
             str(args.train_path), str(args.test_path), float(args.lr), int(args.batch), \
             float(args.lr_decay), int(args.decay_interval) , str( args.param_dict_pkl )
+    
+    task = str(args.task)
+    print('The task is '+ task+'!')
     
     train_data = pd.read_csv(train_path)
     test_data = pd.read_csv(test_path)
@@ -148,11 +152,11 @@ if __name__ == "__main__":
     
     T_max, T_min = 120, 0
     train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence), \
-                  np.array( rescale_targets(list(train_data.topt), T_max, T_min)) ];
+                  np.array( rescale_targets(list(train_data[task]), T_max, T_min)) ];
     test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), \
-                 np.array( rescale_targets(list(test_data.topt), T_max, T_min)) ];
+                 np.array( rescale_targets(list(test_data[task]), T_max, T_min)) ];
     dev_pack = [np.array(dev_data.uniprot_id), np.array(dev_data.sequence), \
-                np.array( rescale_targets(list(dev_data.topt), T_max, T_min)) ];
+                np.array( rescale_targets(list(dev_data[task]), T_max, T_min)) ];
 
     if torch.cuda.is_available():
         device = torch.device('cuda')
@@ -169,7 +173,7 @@ if __name__ == "__main__":
             param_dict['window'],param_dict['dropout'],param_dict['n_head'],param_dict['n_RD']
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     
-    dim=320  # esm2_t6_8M_UR50D
+    dim= 1280  # esm2_t33_650M_UR50D
     M = MultiAttModel( dim, device, window, n_head, dropout, n_RD)
     M.to(device);
     
@@ -177,9 +181,8 @@ if __name__ == "__main__":
                    decay_interval,  num_epochs )
     train_result['Epoch'] = list(np.arange(1,num_epochs+1))
     result_pd = pd.DataFrame( train_result )
-    output_path = os.path.join(  '../data/performances/',os.path.basename(param_dict_pkl).split('.')[0] + \
-                               '_lr=' + str(lr) + '_batch='+str(batch_size)+ \
-                               '_lr_decay=' + str(lr_decay) + '_decay_interval=' + str(decay_interval) +'.csv' )
+    output_path = os.path.join(  '../data/performances/',task +'_' +\
+                               os.path.basename(param_dict_pkl).split('.')[0] + '_lr=' + str(lr) + '.csv' )
     
     result_pd.to_csv(output_path,index=None)
     
