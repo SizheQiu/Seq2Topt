@@ -128,7 +128,7 @@ def split_data( data, ratio=0.1):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--task',choices=['topt','pHopt'], required = True)
+    parser.add_argument('--task',choices=['topt','pHopt','tm'], required = True)
     parser.add_argument('--train_path', required = True)
     parser.add_argument('--test_path', required = True)
     parser.add_argument('--lr', default = 0.0005, type=float )

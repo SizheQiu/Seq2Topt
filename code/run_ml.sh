@@ -11,8 +11,8 @@
 
 module load PyTorch/1.7.1-fosscuda-2020b
 
-train_path=../data/train_os.csv
-test_path=../data/test.csv
+train_path=../data/Topt/train_os.csv
+test_path=../data/Topt/test.csv
 
 
 start_time=$(date +%s)
