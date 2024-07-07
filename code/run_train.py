@@ -17,7 +17,7 @@ import esm
 
 def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
     #Load esm2
-    esm2_model, alphabet = esm.pretrained.esm2_t33_650M_UR50D # 33 layers
+    esm2_model, alphabet = esm.pretrained.esm2_t33_650M_UR50D() # 33 layers
     esm2_model = esm2_model.to(device)
     esm2_batch_converter = alphabet.get_batch_converter()
     
@@ -83,7 +83,7 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
             
 def test(model, test_pack,  batch_size, device ):
     #Load esm2
-    esm2_model, alphabet = esm.pretrained.esm2_t33_650M_UR50D # 33 layers
+    esm2_model, alphabet = esm.pretrained.esm2_t33_650M_UR50D() # 33 layers
     esm2_model = esm2_model.to(device)
     esm2_batch_converter = alphabet.get_batch_converter()
     
