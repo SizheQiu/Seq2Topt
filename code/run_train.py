@@ -146,17 +146,24 @@ if __name__ == "__main__":
     task = str(args.task)
     print('The task is '+ task+'!')
     
+    sig_ssfs = list( load_pickle('../data/sig_ssfs.pkl') )
+    #TODO: add ssf into datapack
     train_data = pd.read_csv(train_path)
     test_data = pd.read_csv(test_path)
     train_data, dev_data = split_table( train_data, 0.1 )
-    
-    T_max, T_min = 120, 0
-    train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence), \
+    if task == 'topt':
+        T_max, T_min = 120, 0
+        train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence), \
                   np.array( rescale_targets(list(train_data[task]), T_max, T_min)) ];
-    test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), \
+        test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), \
                  np.array( rescale_targets(list(test_data[task]), T_max, T_min)) ];
-    dev_pack = [np.array(dev_data.uniprot_id), np.array(dev_data.sequence), \
+        dev_pack = [np.array(dev_data.uniprot_id), np.array(dev_data.sequence), \
                 np.array( rescale_targets(list(dev_data[task]), T_max, T_min)) ];
+    elif task == 'pHopt':
+        train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence),np.array( list(train_data[task]) ) ];
+        test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), np.array( list(test_data[task]) ) ];
+        dev_pack = [np.array(dev_data.uniprot_id), np.array(dev_data.sequence), np.array( list(dev_data[task]) ) ];
+
 
     if torch.cuda.is_available():
         device = torch.device('cuda')
