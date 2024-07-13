@@ -101,19 +101,19 @@ class MultiAttModel(nn.Module):
         
 class Seq2Opt(nn.Module):
     '''
-    Multi-head attention, ESM2 embedding + statistical sequence features
+    Seq2Opt: Multi-head attention, ESM2 embedding + statistical sequence features
     '''
-    def __init__(self, dim, device, window, n_head, dropout, n_RD):
+    def __init__(self, emb_dim, ssf_dim, device, window, n_head, dropout, n_RD):
         super(Seq2Opt, self).__init__()
         self.n_RD = n_RD
         self.n_head = n_head
-        ssf_dim = 1470 # AAC, DPC, CTriad, DDE, QSO, CTD
-        self.cnn_v = nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window)
-        self.W_cnns = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(n_head)])
-        self.batchnorm = nn.BatchNorm1d(2*n_head*dim + ssf_dim)
+        self.ssf_dim = ssf_dim # AAC, DPC, CTriad, DDE, QSO, CTD
+        self.cnn_v = nn.Conv1d( emb_dim, emb_dim, kernel_size=2*window+1, padding=window)
+        self.W_cnns = nn.ModuleList([ nn.Conv1d( emb_dim, emb_dim, kernel_size=2*window+1, padding=window) for _ in range(n_head)])
+        self.batchnorm = nn.BatchNorm1d(2*n_head*emb_dim + self.ssf_dim)
         self.dropout = nn.Dropout(dropout)
-        self.RDs = nn.ModuleList([RDBlock(2*n_head*dim + ssf_dim, dropout) for _ in range(n_RD)])  
-        self.output = nn.Linear(2*n_head*dim + ssf_dim, 1)
+        self.RDs = nn.ModuleList([RDBlock(2*n_head*emb_dim + self.ssf_dim, dropout) for _ in range(n_RD)])  
+        self.output = nn.Linear(2*n_head*emb_dim + self.ssf_dim, 1)
         
     def forward(self, emb, ssf):
         values = self.cnn_v(emb)

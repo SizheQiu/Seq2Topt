@@ -8,11 +8,31 @@ import torch.optim as optim
 from torch import nn
 import torch.nn.functional as F
 from functions import *
-from model import MultiAttModel
+from model import MultiAttModel, Seq2Opt
 import os
 import warnings
 import random
 import esm
+
+
+def load_batch(batch_data, esm2_model,esm2_batch_converter, device):
+    ids, seqs, ssfs, targets = batch_data
+    input_data = [(ids[i], seqs[i]) for i in range(len(ids))]
+    batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
+    batch_tokens = batch_tokens.to(device=device, non_blocking=True)
+    with torch.no_grad():
+        emb = esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
+    emb = emb["representations"][33]
+    emb = emb.transpose(1,2) # (batch, features, seqlen)
+    emb = emb.to(device)
+    
+    target_values = torch.FloatTensor( np.array( [ np.array([v]) for v in targets ] ) )
+    target_values = target_values.to(device)
+    
+    ssf_features = torch.FloatTensor( ssfs )
+    ssf_features = ssf_features.to(device)
+    
+    return emb, ssf_features, target_values
 
 
 def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
@@ -30,8 +50,7 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
     if batch_size > min_size:
         div_min = int(batch_size / min_size)
         
-    train_result = {'rmse_train':[],'r2_train':[],'mae_train':[],\
-                    'rmse_test':[],'r2_test':[],'mae_test':[],\
+    train_result = {'rmse_train':[],'r2_train':[],'mae_train':[],'rmse_test':[],'r2_test':[],'mae_test':[],\
                    'rmse_dev':[],'r2_dev':[],'mae_dev':[]}
     
     for epoch in range(num_epochs):
@@ -40,21 +59,9 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         predictions, targets = [],[]
         for i in range(math.ceil( len(train_pack[0]) / min_size )):
             batch_data = [train_pack[di][idx[ i* min_size: (i + 1) * min_size]] for di in range(len(train_pack))]
-            ids, seqs, topts = batch_data
-            #Generate emb
-            input_data = [(ids[i], seqs[i]) for i in range(len(ids))]
-            batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
-            batch_tokens = batch_tokens.to(device=device, non_blocking=True)
-            with torch.no_grad():
-                emb = esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
-            emb = emb["representations"][33]
-            emb = emb.transpose(1,2) # (batch, features, seqlen)
-            emb = emb.to(device)
-         
-            target_values = torch.FloatTensor( np.array( [ np.array([topt]) for topt in topts ] ) )
-            target_values = target_values.to(device)
+            emb, ssf_features, target_values = load_batch(batch_data, esm2_model,esm2_batch_converter, device)
             
-            pred = model( emb )
+            pred = model( emb, ssf_features )
             loss = criterion(pred.float(), target_values.float())
             predictions += pred.cpu().detach().numpy().reshape(-1).tolist()
             targets += target_values.cpu().numpy().reshape(-1).tolist()
@@ -91,18 +98,11 @@ def test(model, test_pack,  batch_size, device ):
     predictions, target_values = [],[]
     for i in range(math.ceil( len(test_pack[0]) / batch_size )):
         batch_data = [test_pack[di][i * batch_size: (i + 1) * batch_size] for di in range(len(test_pack))]
-        ids, seqs, targets = batch_data
-        #Generate emb
-        input_data = [(ids[i], seqs[i]) for i in range(len(ids))]
-        batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
-        batch_tokens = batch_tokens.to(device=device, non_blocking=True)
+        ids, seqs, ssfs, targets = batch_data
+        emb, ssf_features, target_values = load_batch(batch_data, esm2_model,esm2_batch_converter, device)
+        
         with torch.no_grad():
-            emb = esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
-        emb = emb["representations"][33]
-        emb = emb.transpose(1,2) # (batch, features, seqlen)
-        emb = emb.to(device)
-        with torch.no_grad():
-            preds = model( emb )
+            preds = model( emb, ssf_features )
         predictions += preds.cpu().detach().numpy().reshape(-1).tolist()
         target_values += list(targets)  
             
@@ -115,7 +115,8 @@ def test(model, test_pack,  batch_size, device ):
     return rmse, r2, mae
     
 
-    
+
+
 def split_data( data, ratio=0.1):
     idx = np.arange(len( data[0]))
     np.random.shuffle(idx)
@@ -136,7 +137,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr_decay', default = 0.5, type=float )
     parser.add_argument('--decay_interval', default = 10, type=int )
     parser.add_argument('--num_epoch', default = 30, type=int )
-    parser.add_argument('--param_dict_pkl', default = '../data/performances/default.pkl')
+    parser.add_argument('--param_dict_pkl', default = '../data/hyparams/default.pkl')
     args = parser.parse_args()
     
     train_path, test_path, lr, batch_size, lr_decay, decay_interval, param_dict_pkl = \
@@ -149,22 +150,19 @@ if __name__ == "__main__":
     sig_ssfs = list( load_pickle('../data/sig_ssfs.pkl') )
     #TODO: add ssf into datapack
     train_data = pd.read_csv(train_path)
+    train_ssf = load_pickle( os.path.join(os.path.dirname(train_path),'train_ssf.pkl') )
+    train_ssf = train_ssf[sig_ssfs]
     test_data = pd.read_csv(test_path)
-    train_data, dev_data = split_table( train_data, 0.1 )
-    if task == 'topt':
-        T_max, T_min = 120, 0
-        train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence), \
-                  np.array( rescale_targets(list(train_data[task]), T_max, T_min)) ];
-        test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), \
-                 np.array( rescale_targets(list(test_data[task]), T_max, T_min)) ];
-        dev_pack = [np.array(dev_data.uniprot_id), np.array(dev_data.sequence), \
-                np.array( rescale_targets(list(dev_data[task]), T_max, T_min)) ];
-    elif task == 'pHopt':
-        train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence),np.array( list(train_data[task]) ) ];
-        test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), np.array( list(test_data[task]) ) ];
-        dev_pack = [np.array(dev_data.uniprot_id), np.array(dev_data.sequence), np.array( list(dev_data[task]) ) ];
+    test_ssf =  load_pickle( os.path.join(os.path.dirname(test_path),'test_ssf.pkl') )
+    test_ssf = test_ssf[sig_ssfs]
+    rparams = {'topt':(0,120),'tm':(50,100),'pHopt':(1.0,12.0)}
+    train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence), train_ssf.values \
+              np.array( rescale_targets(list(train_data[task]), rparams[task][1], rparams[task][0])) ];
+    test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), test_ssf.values \
+             np.array( rescale_targets(list(test_data[task]), rparams[task][1], rparams[task][0])) ];
 
-
+    train_pack, dev_pack = split_data( train_pack, 0.1)
+    
     if torch.cuda.is_available():
         device = torch.device('cuda')
         print('We use CUDA!')
@@ -180,8 +178,8 @@ if __name__ == "__main__":
             param_dict['window'],param_dict['dropout'],param_dict['n_head'],param_dict['n_RD']
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     
-    dim= 1280  # esm2_t33_650M_UR50D
-    M = MultiAttModel( dim, device, window, n_head, dropout, n_RD)
+    emb_dim= 1280  # esm2_t33_650M_UR50D
+    M = Seq2Opt( emb_dim, len(sig_ssfs), device, window, n_head, dropout, n_RD)
     M.to(device);
     
     train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\

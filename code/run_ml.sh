@@ -11,15 +11,29 @@
 
 module load PyTorch/1.7.1-fosscuda-2020b
 
-train_path=../data/Topt/train_os.csv
-test_path=../data/Topt/test.csv
-
 
 start_time=$(date +%s)
-
-python run_train.py --task topt --train_path ${train_path} --test_path ${test_path}
-
+python run_train.py --task topt --train_path ../data/Topt/train_os.csv --test_path ../data/Topt/test.csv
 end_time=$(date +%s)
 elapsed=$(( end_time - start_time ))
 echo $elapsed
-echo "Done!"
+echo "Topt Done!"
+
+
+start_time=$(date +%s)
+python run_train.py --task tm --train_path ../data/Tm/Tm_Train.csv --test_path ../data/Tm/Tm_Test.csv
+end_time=$(date +%s)
+elapsed=$(( end_time - start_time ))
+echo $elapsed
+echo "Tm Done!"
+
+
+start_time=$(date +%s)
+python run_train.py --task pHopt --train_path ../data/pHopt/train_pH.csv --test_path ../data/pHopt/test_pH.csv
+end_time=$(date +%s)
+elapsed=$(( end_time - start_time ))
+echo $elapsed
+echo "pHopt Done!"
+
+
+
