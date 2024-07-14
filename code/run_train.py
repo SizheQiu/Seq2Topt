@@ -148,7 +148,6 @@ if __name__ == "__main__":
     print('The task is '+ task+'!')
     
     sig_ssfs = list( load_pickle('../data/sig_ssfs.pkl') )
-    #TODO: add ssf into datapack
     train_data = pd.read_csv(train_path)
     train_ssf = load_pickle( os.path.join(os.path.dirname(train_path),'train_ssf.pkl') )
     train_ssf = train_ssf[sig_ssfs]
@@ -156,9 +155,9 @@ if __name__ == "__main__":
     test_ssf =  load_pickle( os.path.join(os.path.dirname(test_path),'test_ssf.pkl') )
     test_ssf = test_ssf[sig_ssfs]
     rparams = {'topt':(0,120),'tm':(50,100),'pHopt':(1.0,12.0)}
-    train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence), train_ssf.values \
+    train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence), train_ssf.values, \
               np.array( rescale_targets(list(train_data[task]), rparams[task][1], rparams[task][0])) ];
-    test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), test_ssf.values \
+    test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), test_ssf.values, \
              np.array( rescale_targets(list(test_data[task]), rparams[task][1], rparams[task][0])) ];
 
     train_pack, dev_pack = split_data( train_pack, 0.1)
