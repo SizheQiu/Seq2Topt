@@ -99,7 +99,7 @@ def test(model, test_pack,  batch_size, device ):
     for i in range(math.ceil( len(test_pack[0]) / batch_size )):
         batch_data = [test_pack[di][i * batch_size: (i + 1) * batch_size] for di in range(len(test_pack))]
         ids, seqs, ssfs, targets = batch_data
-        emb, ssf_features, target_values = load_batch(batch_data, esm2_model,esm2_batch_converter, device)
+        emb, ssf_features, _ = load_batch(batch_data, esm2_model,esm2_batch_converter, device)
         
         with torch.no_grad():
             preds = model( emb, ssf_features )
