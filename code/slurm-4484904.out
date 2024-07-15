@@ -1,0 +1,12 @@
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.391977; r2 test: -5.377959
+epoch: 5/30;  rmse test: 0.247342; r2 test: -1.539557
+epoch: 10/30;  rmse test: 0.162316; r2 test: -0.093663
+epoch: 15/30;  rmse test: 0.186609; r2 test: -0.445523
+epoch: 20/30;  rmse test: 0.134199; r2 test: 0.252411
+epoch: 25/30;  rmse test: 0.124218; r2 test: 0.359483
+Done.
+20082
+Topt Done!
+slurmstepd: error: *** JOB 4484904 ON htc-g010 CANCELLED AT 2024-07-15T23:32:49 DUE TO TIME LIMIT ***
