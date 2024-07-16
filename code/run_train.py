@@ -59,7 +59,7 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         predictions, targets = [],[]
         for i in range(math.ceil( len(train_pack[0]) / min_size )):
             batch_data = [train_pack[di][idx[ i* min_size: (i + 1) * min_size]] for di in range(len(train_pack))]
-            ids, seqs, ssfs, targets = batch_data
+            ids, seqs, ssfs, y = batch_data
             input_data = [(ids[i], seqs[i]) for i in range(len(ids))]
             batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
             batch_tokens = batch_tokens.to(device=device, non_blocking=True)
@@ -71,7 +71,7 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
             
             ssf_features = torch.FloatTensor( ssfs )
             ssf_features = ssf_features.to(device)
-            target_values = torch.FloatTensor( np.array( [ np.array([v]) for v in targets ] ) )
+            target_values = torch.FloatTensor( np.array( [ np.array([v]) for v in y ] ) )
             target_values = target_values.to(device)
             
             pred = model( emb, ssf_features )
@@ -83,8 +83,7 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
                 optimizer.step()
                 optimizer.zero_grad()
                 
-        predictions = np.array(predictions)
-        targets = np.array(targets)
+        predictions = np.array(predictions); targets = np.array(targets);
         train_result['rmse_train'].append( get_rmse( targets, predictions) )
         train_result['r2_train'].append( get_r2( targets, predictions) )
         train_result['mae_train'].append( get_mae( targets, predictions) )
@@ -111,13 +110,13 @@ def test(model, test_pack,  batch_size, device ):
     predictions, target_values = [],[]
     for i in range(math.ceil( len(test_pack[0]) / batch_size )):
         batch_data = [test_pack[di][i * batch_size: (i + 1) * batch_size] for di in range(len(test_pack))]
-        ids, seqs, ssfs, targets = batch_data
+        ids, seqs, ssfs, y = batch_data
         emb, ssf_features, _ = load_batch(batch_data, esm2_model,esm2_batch_converter, device)
         
         with torch.no_grad():
             preds = model( emb, ssf_features )
         predictions += preds.cpu().detach().numpy().reshape(-1).tolist()
-        target_values += list(targets)  
+        target_values += list(y)  
             
     
     predictions = np.array(predictions)
