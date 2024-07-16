@@ -59,7 +59,20 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         predictions, targets = [],[]
         for i in range(math.ceil( len(train_pack[0]) / min_size )):
             batch_data = [train_pack[di][idx[ i* min_size: (i + 1) * min_size]] for di in range(len(train_pack))]
-            emb, ssf_features, target_values = load_batch(batch_data, esm2_model,esm2_batch_converter, device)
+            ids, seqs, ssfs, targets = batch_data
+            input_data = [(ids[i], seqs[i]) for i in range(len(ids))]
+            batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
+            batch_tokens = batch_tokens.to(device=device, non_blocking=True)
+            with torch.no_grad():
+                emb = esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
+            emb = emb["representations"][33]
+            emb = emb.transpose(1,2) # (batch, features, seqlen)
+            emb = emb.to(device)
+            
+            ssf_features = torch.FloatTensor( ssfs )
+            ssf_features = ssf_features.to(device)
+            target_values = torch.FloatTensor( np.array( [ np.array([v]) for v in targets ] ) )
+            target_values = target_values.to(device)
             
             pred = model( emb, ssf_features )
             loss = criterion(pred.float(), target_values.float())

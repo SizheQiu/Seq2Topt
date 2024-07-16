@@ -107,7 +107,7 @@ class Seq2Opt(nn.Module):
         super(Seq2Opt, self).__init__()
         self.n_RD = n_RD
         self.n_head = n_head
-        self.ssf_dim = ssf_dim # AAC, DPC, CTriad, DDE, QSO, CTD
+        self.ssf_dim = ssf_dim 
         self.cnn_v = nn.Conv1d( emb_dim, emb_dim, kernel_size=2*window+1, padding=window)
         self.W_cnns = nn.ModuleList([ nn.Conv1d( emb_dim, emb_dim, kernel_size=2*window+1, padding=window) for _ in range(n_head)])
         self.batchnorm = nn.BatchNorm1d(2*n_head*emb_dim + self.ssf_dim)
