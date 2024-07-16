@@ -1,0 +1,36 @@
+The task is topt!
+We use CUDA!
+Traceback (most recent call last):
+  File "run_train.py", line 195, in <module>
+    train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
+  File "run_train.py", line 88, in train_eval
+    train_result['rmse_train'].append( get_rmse( targets, predictions) )
+  File "/data/engs-deep-learning-biosystem/bras5181/projects/PredOT/code/functions.py", line 71, in get_rmse
+    rmse = sqrt(((x - y)**2).mean(axis=0))
+ValueError: operands could not be broadcast together with shapes (3,) (2547,) 
+503
+Topt Done!
+The task is tm!
+We use CUDA!
+Traceback (most recent call last):
+  File "run_train.py", line 195, in <module>
+    train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
+  File "run_train.py", line 88, in train_eval
+    train_result['rmse_train'].append( get_rmse( targets, predictions) )
+  File "/data/engs-deep-learning-biosystem/bras5181/projects/PredOT/code/functions.py", line 71, in get_rmse
+    rmse = sqrt(((x - y)**2).mean(axis=0))
+ValueError: operands could not be broadcast together with shapes (4,) (5616,) 
+840
+Tm Done!
+The task is pHopt!
+We use CUDA!
+Traceback (most recent call last):
+  File "run_train.py", line 195, in <module>
+    train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
+  File "run_train.py", line 88, in train_eval
+    train_result['rmse_train'].append( get_rmse( targets, predictions) )
+  File "/data/engs-deep-learning-biosystem/bras5181/projects/PredOT/code/functions.py", line 71, in get_rmse
+    rmse = sqrt(((x - y)**2).mean(axis=0))
+ValueError: operands could not be broadcast together with shapes (4,) (7096,) 
+1099
+pHopt Done!
