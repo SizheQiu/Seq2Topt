@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --job-name=DL_hyopt
+#SBATCH --job-name=hyopt_topt
 #SBATCH --clusters=htc
 #SBATCH --time=10:00:00 
 #SBATCH --partition=short

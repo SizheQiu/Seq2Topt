@@ -20,12 +20,12 @@ echo $elapsed
 echo "Topt Done!"
 
 
-start_time=$(date +%s)
-python run_train.py --task tm --train_path ../data/Tm/train_os_tm.csv --test_path ../data/Tm/test_tm.csv
-end_time=$(date +%s)
-elapsed=$(( end_time - start_time ))
-echo $elapsed
-echo "Tm Done!"
+# start_time=$(date +%s)
+# python run_train.py --task tm --train_path ../data/Tm/train_os_tm.csv --test_path ../data/Tm/test_tm.csv
+# end_time=$(date +%s)
+# elapsed=$(( end_time - start_time ))
+# echo $elapsed
+# echo "Tm Done!"
 
 
 

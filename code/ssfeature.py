@@ -1,56 +1,56 @@
 '''
 The code is adopted from https://github.com/Superzchen/iFeature and https://sourceforge.net/projects/pydpicao/.
 '''
-import numpy as np
-import pandas as pd
-import re
-import math
-from collections import Counter
+# import numpy as np
+# import pandas as pd
+# import re
+# import math
+# from collections import Counter
 
-def get_aac(seq):
-    AA = 'ACDEFGHIKLMNPQRSTVWY'
-    output = {}
-    for aa in AA:
-        output['AAC_'+aa] = seq.count(aa)/len(seq)
-    return output
+# def get_aac(seq):
+#     AA = 'ACDEFGHIKLMNPQRSTVWY'
+#     output = {}
+#     for aa in AA:
+#         output['AAC_'+aa] = seq.count(aa)/len(seq)
+#     return output
 
-def get_dpc(seq):
-    '''
-    dipeptide composition (DPC)
-    '''
-    output = {}
-    AA = 'ACDEFGHIKLMNPQRSTVWY'
-    DPs = [aa1 + aa2 for aa1 in AA for aa2 in AA]
-    for dp in DPs:
-        output['DPC_'+ dp] = seq.count(dp)/(len(seq)-1)
-    return output
+# def get_dpc(seq):
+#     '''
+#     dipeptide composition (DPC)
+#     '''
+#     output = {}
+#     AA = 'ACDEFGHIKLMNPQRSTVWY'
+#     DPs = [aa1 + aa2 for aa1 in AA for aa2 in AA]
+#     for dp in DPs:
+#         output['DPC_'+ dp] = seq.count(dp)/(len(seq)-1)
+#     return output
 
-def get_CTriad_nogap(seq):
-    '''
-    Conjoint Triad Descriptors(CTriad), gap = 0
-    '''
-    if len(seq) < 3:
-        return None
-    output = {}
-    AAGroup = {'g1': 'AGV','g2': 'ILFP','g3': 'YMTS','g4': 'HNQW',
-               'g5': 'RK','g6': 'DE','g7': 'C'}
-    myGroups = sorted(AAGroup.keys()); AADict = {};
-    for g in myGroups:
-        for aa in AAGroup[g]:
-            AADict[aa] = g
-    features = [f1 + '_'+ f2 + '_' + f3 for f1 in myGroups for f2 in myGroups for f3 in myGroups]
-    for f in features:
-        output[f] = 0
-    for i in range(len(seq)):
-        if i+2<len(seq):
-            fea = AADict[seq[i]] + '_' + AADict[seq[i+1]]+'_'+AADict[seq[i+2]]
-            output[fea] = output[fea] + 1
+# def get_CTriad_nogap(seq):
+#     '''
+#     Conjoint Triad Descriptors(CTriad), gap = 0
+#     '''
+#     if len(seq) < 3:
+#         return None
+#     output = {}
+#     AAGroup = {'g1': 'AGV','g2': 'ILFP','g3': 'YMTS','g4': 'HNQW',
+#                'g5': 'RK','g6': 'DE','g7': 'C'}
+#     myGroups = sorted(AAGroup.keys()); AADict = {};
+#     for g in myGroups:
+#         for aa in AAGroup[g]:
+#             AADict[aa] = g
+#     features = [f1 + '_'+ f2 + '_' + f3 for f1 in myGroups for f2 in myGroups for f3 in myGroups]
+#     for f in features:
+#         output[f] = 0
+#     for i in range(len(seq)):
+#         if i+2<len(seq):
+#             fea = AADict[seq[i]] + '_' + AADict[seq[i+1]]+'_'+AADict[seq[i+2]]
+#             output[fea] = output[fea] + 1
             
-    maxValue, minValue = max(output.values()), min(output.values())
-    for f in features:
-        output[f] = (output[f] - minValue) / maxValue
+#     maxValue, minValue = max(output.values()), min(output.values())
+#     for f in features:
+#         output[f] = (output[f] - minValue) / maxValue
     
-    return output
+#     return output
 
 
 # def get_dde(seq):
