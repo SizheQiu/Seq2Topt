@@ -2,7 +2,6 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --job-name=DL_GPU
-#SBATCH --clusters=htc
 #SBATCH --time=10:00:00 
 #SBATCH --partition=short
 #SBATCH --gres=gpu:rtx8000:1
@@ -20,12 +19,12 @@ echo $elapsed
 echo "Topt Done!"
 
 
-# start_time=$(date +%s)
-# python run_train.py --task tm --train_path ../data/Tm/train_os_tm.csv --test_path ../data/Tm/test_tm.csv
-# end_time=$(date +%s)
-# elapsed=$(( end_time - start_time ))
-# echo $elapsed
-# echo "Tm Done!"
+start_time=$(date +%s)
+python run_train.py --task tm --train_path ../data/Tm/train_os_tm.csv --test_path ../data/Tm/test_tm.csv
+end_time=$(date +%s)
+elapsed=$(( end_time - start_time ))
+echo $elapsed
+echo "Tm Done!"
 
 
 

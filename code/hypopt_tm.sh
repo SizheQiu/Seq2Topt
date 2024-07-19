@@ -2,7 +2,6 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --job-name=hyopt_tm
-#SBATCH --clusters=htc
 #SBATCH --time=10:00:00 
 #SBATCH --partition=short
 #SBATCH --gres=gpu:rtx8000:1

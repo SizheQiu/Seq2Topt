@@ -37,7 +37,7 @@ import esm
 
 def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
     #Load esm2
-    esm2_model, alphabet = esm.pretrained.esm2_t33_650M_UR50D() # 33 layers
+    esm2_model, alphabet = esm.pretrained.esm2_t6_8M_UR50D() # 6 layers
     esm2_model = esm2_model.to(device)
     esm2_batch_converter = alphabet.get_batch_converter()
     
@@ -64,8 +64,8 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
             batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
             batch_tokens = batch_tokens.to(device=device, non_blocking=True)
             with torch.no_grad():
-                emb = esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
-            emb = emb["representations"][33]
+                emb = esm2_model(batch_tokens, repr_layers=[6], return_contacts=False)
+            emb = emb["representations"][6]
             emb = emb.transpose(1,2) # (batch, features, seqlen)
             emb = emb.to(device)
             
@@ -100,7 +100,7 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
             
 def test(model, test_pack,  batch_size, device ):
     #Load esm2
-    esm2_model, alphabet = esm.pretrained.esm2_t33_650M_UR50D() # 33 layers
+    esm2_model, alphabet = esm.pretrained.esm2_t6_8M_UR50D() # 6 layers
     esm2_model = esm2_model.to(device)
     esm2_batch_converter = alphabet.get_batch_converter()
     
@@ -113,8 +113,8 @@ def test(model, test_pack,  batch_size, device ):
         batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
         batch_tokens = batch_tokens.to(device=device, non_blocking=True)
         with torch.no_grad():
-            emb = esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
-        emb = emb["representations"][33]
+            emb = esm2_model(batch_tokens, repr_layers=[6], return_contacts=False)
+        emb = emb["representations"][6]
         emb = emb.transpose(1,2) # (batch, features, seqlen)
         emb = emb.to(device)
         
@@ -167,9 +167,9 @@ if __name__ == "__main__":
     train_data = pd.read_csv(train_path)
     test_data = pd.read_csv(test_path)
     rparams = {'topt':(0,120),'tm':(0,100)}
-    train_pack = [np.array(train_data.uniprot_id), np.array(train_data.sequence), \
+    train_pack = [np.array(train_data.index), np.array(train_data.sequence), \
               np.array( rescale_targets(list(train_data[task]), rparams[task][1], rparams[task][0])) ];
-    test_pack = [np.array(test_data.uniprot_id), np.array(test_data.sequence), \
+    test_pack = [np.array(test_data.index), np.array(test_data.sequence), \
              np.array( rescale_targets(list(test_data[task]), rparams[task][1], rparams[task][0])) ];
 
     train_pack, dev_pack = split_data( train_pack, 0.1)
@@ -189,7 +189,7 @@ if __name__ == "__main__":
             param_dict['window'],param_dict['dropout'],param_dict['n_head'],param_dict['n_RD']
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     
-    emb_dim= 1280  # esm2_t33_650M_UR50D
+    emb_dim= 320  # esm2_t6_8M_UR50D
     M = MultiAttModel( emb_dim, device, window, n_head, dropout, n_RD)
     M.to(device);
     
