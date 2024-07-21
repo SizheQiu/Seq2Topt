@@ -1,0 +1,9 @@
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.34554; r2 test: -3.9563
+epoch: 5/30;  rmse test: 0.200305; r2 test: -0.665507
+epoch: 10/30;  rmse test: 0.141309; r2 test: 0.171105
+epoch: 15/30;  rmse test: 0.121368; r2 test: 0.388539
+epoch: 20/30;  rmse test: 0.132623; r2 test: 0.269873
+epoch: 25/30;  rmse test: 0.136497; r2 test: 0.226594
+Done.
