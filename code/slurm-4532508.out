@@ -1,0 +1,112 @@
+1
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.198879; r2 test: -0.641879
+epoch: 5/30;  rmse test: 0.216191; r2 test: -0.940155
+epoch: 10/30;  rmse test: 0.172547; r2 test: -0.235876
+epoch: 15/30;  rmse test: 0.118653; r2 test: 0.415586
+epoch: 20/30;  rmse test: 0.120767; r2 test: 0.394575
+epoch: 25/30;  rmse test: 0.11812; r2 test: 0.420825
+Done.
+1587
+2
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.245004; r2 test: -1.491773
+epoch: 5/30;  rmse test: 0.220837; r2 test: -1.024436
+epoch: 10/30;  rmse test: 0.140093; r2 test: 0.185308
+epoch: 15/30;  rmse test: 0.137088; r2 test: 0.219882
+epoch: 20/30;  rmse test: 0.123252; r2 test: 0.369406
+epoch: 25/30;  rmse test: 0.117427; r2 test: 0.4276
+Done.
+1558
+3
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.377238; r2 test: -4.907331
+epoch: 5/30;  rmse test: 0.233013; r2 test: -1.253828
+epoch: 10/30;  rmse test: 0.125165; r2 test: 0.349683
+epoch: 15/30;  rmse test: 0.127345; r2 test: 0.326829
+epoch: 20/30;  rmse test: 0.121669; r2 test: 0.385499
+epoch: 25/30;  rmse test: 0.121247; r2 test: 0.389756
+Done.
+1576
+4
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.274648; r2 test: -2.131234
+epoch: 5/30;  rmse test: 0.196195; r2 test: -0.59785
+epoch: 10/30;  rmse test: 0.127416; r2 test: 0.326079
+epoch: 15/30;  rmse test: 0.128133; r2 test: 0.318475
+epoch: 20/30;  rmse test: 0.121439; r2 test: 0.38782
+epoch: 25/30;  rmse test: 0.115983; r2 test: 0.441596
+Done.
+1606
+5
+The task is topt!
+We use CUDA!
+Traceback (most recent call last):
+  File "run_train.py", line 201, in <module>
+    train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
+  File "run_train.py", line 90, in train_eval
+    rmse_dev, r2_dev, mae_dev = test(model, dev_pack, batch_size, device )
+  File "run_train.py", line 121, in test
+    emb = esm2_model(batch_tokens, repr_layers=[6], return_contacts=False)
+  File "/apps/system/easybuild/software/PyTorch/1.7.1-fosscuda-2020b/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/bras5181/.local/lib/python3.8/site-packages/esm/model/esm2.py", line 112, in forward
+    x, attn = layer(
+  File "/apps/system/easybuild/software/PyTorch/1.7.1-fosscuda-2020b/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/bras5181/.local/lib/python3.8/site-packages/esm/modules.py", line 125, in forward
+    x, attn = self.self_attn(
+  File "/apps/system/easybuild/software/PyTorch/1.7.1-fosscuda-2020b/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/bras5181/.local/lib/python3.8/site-packages/esm/multihead_attention.py", line 371, in forward
+    attn_weights = attn_weights.masked_fill(
+RuntimeError: CUDA out of memory. Tried to allocate 15.60 GiB (GPU 0; 44.48 GiB total capacity; 17.42 GiB already allocated; 10.68 GiB free; 32.73 GiB reserved in total by PyTorch)
+60
+6
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.349511; r2 test: -4.07089
+epoch: 5/30;  rmse test: 0.202524; r2 test: -0.702606
+epoch: 10/30;  rmse test: 0.120197; r2 test: 0.400278
+epoch: 15/30;  rmse test: 0.12032; r2 test: 0.399054
+epoch: 20/30;  rmse test: 0.114942; r2 test: 0.451575
+epoch: 25/30;  rmse test: 0.115882; r2 test: 0.44257
+Done.
+1579
+7
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.202994; r2 test: -0.710522
+epoch: 5/30;  rmse test: 0.219409; r2 test: -0.998347
+epoch: 10/30;  rmse test: 0.137812; r2 test: 0.21162
+epoch: 15/30;  rmse test: 0.13111; r2 test: 0.286436
+epoch: 20/30;  rmse test: 0.117391; r2 test: 0.427957
+epoch: 25/30;  rmse test: 0.129119; r2 test: 0.307943
+Done.
+1646
+8
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.340613; r2 test: -3.815979
+epoch: 5/30;  rmse test: 0.185138; r2 test: -0.422826
+epoch: 10/30;  rmse test: 0.14695; r2 test: 0.103608
+epoch: 15/30;  rmse test: 0.135607; r2 test: 0.236642
+epoch: 20/30;  rmse test: 0.120404; r2 test: 0.398214
+epoch: 25/30;  rmse test: 0.130931; r2 test: 0.288383
+Done.
+1644
+9
+The task is topt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.377097; r2 test: -4.902936
+epoch: 5/30;  rmse test: 0.163642; r2 test: -0.111609
+epoch: 10/30;  rmse test: 0.116445; r2 test: 0.437134
+epoch: 15/30;  rmse test: 0.123401; r2 test: 0.367885
+epoch: 20/30;  rmse test: 0.11588; r2 test: 0.442583
+epoch: 25/30;  rmse test: 0.117092; r2 test: 0.430864
+Done.
+1630
