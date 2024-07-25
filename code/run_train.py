@@ -91,10 +91,10 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         train_result['rmse_test'].append(rmse_test); train_result['r2_test'].append(r2_test); train_result['mae_test'].append(mae_test);
         train_result['rmse_dev'].append(rmse_dev); train_result['r2_dev'].append(r2_dev); train_result['mae_dev'].append(mae_dev);
         
-#         if r2_test > 0.46:
-#             print('Best model found at epoch=' + str(epoch) + '!')
-#             best_model_pth = '../data/model_pth/model_topt_r2test=' +str(r2_test)+'.pth'
-#             torch.save( model.state_dict(), best_model_pth)
+        if rmse_test < 0.065:
+            print('Best model found at epoch=' + str(epoch) + '!')
+            best_model_pth = '../data/model_pth/model_pHopt_rmse=' +str(rmse_test)+'.pth'
+            torch.save( model.state_dict(), best_model_pth)
         
         if epoch%5 == 0:
             print('epoch: '+str(epoch)+'/'+ str(num_epochs) +';  rmse test: ' + str(rmse_test) + '; r2 test: ' + str(r2_test) )
