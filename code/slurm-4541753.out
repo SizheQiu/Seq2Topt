@@ -1,0 +1,22 @@
+The task is tm!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.133115; r2 test: -0.116703
+epoch: 5/30;  rmse test: 0.133226; r2 test: -0.118569
+epoch: 10/30;  rmse test: 0.077877; r2 test: 0.61779
+epoch: 15/30;  rmse test: 0.081684; r2 test: 0.57951
+epoch: 20/30;  rmse test: 0.079668; r2 test: 0.600008
+epoch: 25/30;  rmse test: 0.089551; r2 test: 0.494607
+Done.
+2841
+Tm Done!
+The task is pHopt!
+We use CUDA!
+epoch: 0/30;  rmse test: 0.261681; r2 test: -9.068835
+epoch: 5/30;  rmse test: 0.147662; r2 test: -2.206066
+epoch: 10/30;  rmse test: 0.069654; r2 test: 0.286613
+epoch: 15/30;  rmse test: 0.068036; r2 test: 0.319378
+epoch: 20/30;  rmse test: 0.064802; r2 test: 0.382543
+epoch: 25/30;  rmse test: 0.074617; r2 test: 0.18133
+Done.
+3777
+Tm Done!
