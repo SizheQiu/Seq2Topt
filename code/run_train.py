@@ -91,10 +91,10 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         train_result['rmse_test'].append(rmse_test); train_result['r2_test'].append(r2_test); train_result['mae_test'].append(mae_test);
         train_result['rmse_dev'].append(rmse_dev); train_result['r2_dev'].append(r2_dev); train_result['mae_dev'].append(mae_dev);
         
-        if r2_test > 0.46:
-            print('Best model found at epoch=' + str(epoch) + '!')
-            best_model_pth = '../data/model_pth/model_topt_r2test=' +str(r2_test)+'.pth'
-            torch.save( model.state_dict(), best_model_pth)
+#         if r2_test > 0.46:
+#             print('Best model found at epoch=' + str(epoch) + '!')
+#             best_model_pth = '../data/model_pth/model_topt_r2test=' +str(r2_test)+'.pth'
+#             torch.save( model.state_dict(), best_model_pth)
         
         if epoch%5 == 0:
             print('epoch: '+str(epoch)+'/'+ str(num_epochs) +';  rmse test: ' + str(rmse_test) + '; r2 test: ' + str(r2_test) )
@@ -151,7 +151,7 @@ def split_data( data, ratio=0.1):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--task',choices=['topt','tm'], required = True)
+    parser.add_argument('--task',choices=['topt','tm','pHopt'], required = True)
     parser.add_argument('--train_path', required = True)
     parser.add_argument('--test_path', required = True)
     parser.add_argument('--lr', default = 0.0005, type=float )
@@ -171,7 +171,7 @@ if __name__ == "__main__":
    
     train_data = pd.read_csv(train_path)
     test_data = pd.read_csv(test_path)
-    rparams = {'topt':(0,120),'tm':(0,100)}
+    rparams = {'topt':(0,120),'tm':(0,100),'pHopt':(0,14)}
     train_pack = [np.array(train_data.index), np.array(train_data.sequence), \
               np.array( rescale_targets(list(train_data[task]), rparams[task][1], rparams[task][0])) ];
     test_pack = [np.array(test_data.index), np.array(test_data.sequence), \
