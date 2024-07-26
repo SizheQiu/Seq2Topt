@@ -14,6 +14,9 @@ import warnings
 import random
 import esm
 
+'''
+Predict enzyme optimal temperature.
+'''
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Predict enzyme Topt from protein sequences. \
