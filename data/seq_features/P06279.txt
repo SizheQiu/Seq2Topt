@@ -1,0 +1,92 @@
+##gff-version 3
+P06279	UniProtKB	Signal peptide	1	34	.	.	.	Ontology_term=ECO:0000269,ECO:0000269;evidence=ECO:0000269|PubMed:2999073,ECO:0000269|PubMed:3924897;Dbxref=PMID:2999073,PMID:3924897	
+P06279	UniProtKB	Chain	35	549	.	.	.	ID=PRO_0000001334;Note=Alpha-amylase	
+P06279	UniProtKB	Active site	268	268	.	.	.	Note=Nucleophile	
+P06279	UniProtKB	Active site	298	298	.	.	.	Note=Proton donor	
+P06279	UniProtKB	Binding site	139	139	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	196	196	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	196	196	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	218	218	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	220	220	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	220	220	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	231	231	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	231	231	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	237	237	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	237	237	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	238	238	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	239	239	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	272	272	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	337	337	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	339	339	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	440	440	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	441	441	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Binding site	464	464	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:11226887,ECO:0007744|PDB:1HVX;Dbxref=PMID:11226887	
+P06279	UniProtKB	Site	365	365	.	.	.	Note=Transition state stabilizer;Ontology_term=ECO:0000250;evidence=ECO:0000250	
+P06279	UniProtKB	Sequence conflict	13	13	.	.	.	Note=M->V;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	19	19	.	.	.	Note=L->W;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	23	23	.	.	.	Note=L->S;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	31	31	.	.	.	Note=P->H;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	107	107	.	.	.	Note=A->T;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	167	167	.	.	.	Note=T->I;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	179	179	.	.	.	Note=P->N;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	251	251	.	.	.	Note=S->N;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	260	262	.	.	.	Note=TNI->RTL;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	284	284	.	.	.	Note=D->Y;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	312	312	.	.	.	Note=M->T;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	338	338	.	.	.	Note=T->A;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	342	342	.	.	.	Note=R->S;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	346	346	.	.	.	Note=T->N;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	376	376	.	.	.	Note=V->C;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	526	527	.	.	.	Note=WS->RP;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	527	527	.	.	.	Note=S->P;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Sequence conflict	535	535	.	.	.	Note=D->G;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+P06279	UniProtKB	Beta strand	42	44	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	52	54	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	56	69	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	74	77	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	81	85	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	90	95	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	107	110	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	115	127	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	131	136	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	139	141	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	145	156	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	159	163	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	168	176	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Turn	179	183	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	192	194	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	195	201	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Turn	202	205	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	206	212	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	234	238	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	243	260	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	264	267	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	270	272	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	277	289	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	294	297	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	304	313	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Turn	314	316	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	318	321	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	323	333	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Turn	334	337	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	341	343	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Turn	344	347	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	349	352	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	354	356	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	357	361	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Turn	364	366	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Turn	378	380	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	381	390	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	391	399	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	400	404	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	407	409	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	415	427	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	433	436	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	439	447	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	458	465	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	468	473	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Helix	476	478	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	482	485	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	493	495	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	500	506	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	
+P06279	UniProtKB	Beta strand	511	516	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:4UZU	

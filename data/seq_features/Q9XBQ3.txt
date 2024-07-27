@@ -1,0 +1,65 @@
+##gff-version 3
+Q9XBQ3	UniProtKB	Initiator methionine	1	1	.	.	.	Note=Removed;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:7887599;Dbxref=PMID:7887599	
+Q9XBQ3	UniProtKB	Chain	2	502	.	.	.	ID=PRO_0000057700;Note=Intracellular exo-alpha-(1->5)-L-arabinofuranosidase	
+Q9XBQ3	UniProtKB	Active site	175	175	.	.	.	Note=Proton donor/acceptor;Ontology_term=ECO:0000305,ECO:0000305,ECO:0000305;evidence=ECO:0000305|PubMed:11943144,ECO:0000305|PubMed:12221104,ECO:0000305|PubMed:14517232;Dbxref=PMID:11943144,PMID:12221104,PMID:14517232	
+Q9XBQ3	UniProtKB	Active site	294	294	.	.	.	Note=Nucleophile;Ontology_term=ECO:0000305,ECO:0000305;evidence=ECO:0000305|PubMed:12221104,ECO:0000305|PubMed:14517232;Dbxref=PMID:12221104,PMID:14517232	
+Q9XBQ3	UniProtKB	Binding site	29	29	.	.	.	Ontology_term=ECO:0000269,ECO:0007744,ECO:0007744,ECO:0007744;evidence=ECO:0000269|PubMed:14517232,ECO:0007744|PDB:1PZ2,ECO:0007744|PDB:1QW8,ECO:0007744|PDB:1QW9;Dbxref=PMID:14517232	
+Q9XBQ3	UniProtKB	Binding site	74	74	.	.	.	Ontology_term=ECO:0000269,ECO:0007744,ECO:0007744,ECO:0007744;evidence=ECO:0000269|PubMed:14517232,ECO:0007744|PDB:1PZ2,ECO:0007744|PDB:1QW8,ECO:0007744|PDB:1QW9;Dbxref=PMID:14517232	
+Q9XBQ3	UniProtKB	Binding site	174	174	.	.	.	Ontology_term=ECO:0000269,ECO:0007744,ECO:0007744;evidence=ECO:0000269|PubMed:14517232,ECO:0007744|PDB:1PZ2,ECO:0007744|PDB:1QW9;Dbxref=PMID:14517232	
+Q9XBQ3	UniProtKB	Binding site	246	246	.	.	.	Ontology_term=ECO:0000269,ECO:0007744,ECO:0007744,ECO:0007744;evidence=ECO:0000269|PubMed:14517232,ECO:0007744|PDB:1PZ2,ECO:0007744|PDB:1QW8,ECO:0007744|PDB:1QW9;Dbxref=PMID:14517232	
+Q9XBQ3	UniProtKB	Binding site	294	294	.	.	.	Note=Covalent;Ontology_term=ECO:0000269,ECO:0007744,ECO:0007744,ECO:0007744;evidence=ECO:0000269|PubMed:14517232,ECO:0007744|PDB:1PZ2,ECO:0007744|PDB:1QW8,ECO:0007744|PDB:1QW9;Dbxref=PMID:14517232	
+Q9XBQ3	UniProtKB	Binding site	351	351	.	.	.	Ontology_term=ECO:0000269,ECO:0007744,ECO:0007744;evidence=ECO:0000269|PubMed:14517232,ECO:0007744|PDB:1QW8,ECO:0007744|PDB:1QW9;Dbxref=PMID:14517232	
+Q9XBQ3	UniProtKB	Site	298	298	.	.	.	Note=Important for substrate recognition;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:14517232;Dbxref=PMID:14517232	
+Q9XBQ3	UniProtKB	Site	351	351	.	.	.	Note=Important for substrate recognition;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:14517232;Dbxref=PMID:14517232	
+Q9XBQ3	UniProtKB	Mutagenesis	175	175	.	.	.	Note=Strongly reduced catalytic activity. Increases affinity for substrates. The mutant has an effect on the glycosylation step. The removal of the acid-base catalyst seems to have affected the ionization state of the nucleophile%2C elevating its pKa%2C reducing its acidity%2C and shifting the optimal pH to higher values. E->A;Ontology_term=ECO:0000269,ECO:0000269,ECO:0000269;evidence=ECO:0000269|PubMed:11943144,ECO:0000269|PubMed:12221104,ECO:0000269|PubMed:14517232;Dbxref=PMID:11943144,PMID:12221104,PMID:14517232	
+Q9XBQ3	UniProtKB	Mutagenesis	294	294	.	.	.	Note=Abolishes catalytic activity%2C but the binding affinity shows only a small change. E->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12221104;Dbxref=PMID:12221104	
+Q9XBQ3	UniProtKB	Beta strand	6	9	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	14	18	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	21	24	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	25	27	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Turn	37	39	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	51	53	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	54	62	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	67	71	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	74	78	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	81	84	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	88	90	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	94	96	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Turn	97	100	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	101	103	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	109	119	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	122	127	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	134	145	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	148	150	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	151	158	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	169	174	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	187	204	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	209	212	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Turn	221	224	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	225	234	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	235	237	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	239	247	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	254	258	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	261	282	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	289	297	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	302	305	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	312	314	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	324	339	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Turn	340	343	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	344	350	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	352	356	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	358	361	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	367	369	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Helix	373	382	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	385	388	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	391	393	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	403	415	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Turn	416	419	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	420	427	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	430	432	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1PZ3	
+Q9XBQ3	UniProtKB	Beta strand	434	439	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	447	454	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	473	475	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1PZ3	
+Q9XBQ3	UniProtKB	Beta strand	479	481	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	484	489	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	
+Q9XBQ3	UniProtKB	Beta strand	491	500	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QW9	

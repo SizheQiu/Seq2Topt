@@ -1,0 +1,54 @@
+##gff-version 3
+O33830	UniProtKB	Chain	1	480	.	.	.	ID=PRO_0000169855;Note=Alpha-glucosidase	
+O33830	UniProtKB	Active site	175	175	.	.	.	Note=Proton donor;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+O33830	UniProtKB	Active site	260	260	.	.	.	Note=Proton acceptor;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+O33830	UniProtKB	Binding site	4	70	.	.	.	.	
+O33830	UniProtKB	Binding site	119	119	.	.	.	.	
+O33830	UniProtKB	Binding site	153	153	.	.	.	.	
+O33830	UniProtKB	Binding site	174	174	.	.	.	Ontology_term=ECO:0000250;evidence=ECO:0000250	
+O33830	UniProtKB	Binding site	203	203	.	.	.	Ontology_term=ECO:0000250;evidence=ECO:0000250	
+O33830	UniProtKB	Mutagenesis	10	10	.	.	.	Note=Reduced activity. 300-fold reduction of the binding affinity for NAD(+). No change in substrate affinity. G->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12062450;Dbxref=PMID:12062450	
+O33830	UniProtKB	Mutagenesis	12	12	.	.	.	Note=No change in activity and substrate affinity. 5-fold reduction of the binding affinity for NAD(+). G->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12062450;Dbxref=PMID:12062450	
+O33830	UniProtKB	Mutagenesis	13	13	.	.	.	Note=Highly reduced activity. 10-fold reduction of the binding affinity for NAD(+). No change in substrate affinity. S->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12062450;Dbxref=PMID:12062450	
+O33830	UniProtKB	Sequence conflict	459	479	.	.	.	Note=Missing;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+O33830	UniProtKB	Beta strand	5	9	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Turn	10	12	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	14	25	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	28	30	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	34	38	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	42	58	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	64	69	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	71	75	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	79	83	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	89	102	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	122	124	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	126	142	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	147	150	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	155	165	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	168	173	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	176	178	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	179	186	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	191	193	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	194	201	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	204	212	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	218	227	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	229	231	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	244	253	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	259	261	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	267	270	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	273	280	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Turn	282	285	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	290	316	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	322	324	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	326	329	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	333	346	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	356	365	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	369	376	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	388	397	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Beta strand	400	403	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	412	417	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	419	435	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	438	446	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	454	465	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	468	470	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	
+O33830	UniProtKB	Helix	471	477	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1OBB	

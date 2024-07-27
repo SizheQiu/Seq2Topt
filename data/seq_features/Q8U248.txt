@@ -1,0 +1,40 @@
+##gff-version 3
+Q8U248	UniProtKB	Chain	1	365	.	.	.	ID=PRO_0000441405;Note=TRNA (guanine(6)-N2)-methyltransferase	
+Q8U248	UniProtKB	Domain	69	182	.	.	.	Note=THUMP;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU00529	
+Q8U248	UniProtKB	Binding site	198	202	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:22362751,ECO:0007744|PDB:3TM4;Dbxref=PMID:22362751	
+Q8U248	UniProtKB	Binding site	228	230	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:22362751,ECO:0007744|PDB:3TM4;Dbxref=PMID:22362751	
+Q8U248	UniProtKB	Binding site	248	248	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:22362751,ECO:0007744|PDB:3TM4;Dbxref=PMID:22362751	
+Q8U248	UniProtKB	Binding site	276	277	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:22362751,ECO:0007744|PDB:3TM4;Dbxref=PMID:22362751	
+Q8U248	UniProtKB	Binding site	293	293	.	.	.	Ontology_term=ECO:0000269,ECO:0007744;evidence=ECO:0000269|PubMed:22362751,ECO:0007744|PDB:3TM4;Dbxref=PMID:22362751	
+Q8U248	UniProtKB	Beta strand	2	6	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	12	24	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Turn	25	27	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	30	35	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	36	38	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	42	47	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	50	53	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	59	62	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	64	71	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	76	86	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Turn	88	92	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	95	107	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	111	114	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	119	130	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	135	151	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	160	162	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	164	172	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	175	183	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	204	214	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	221	223	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	230	237	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	244	249	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	251	263	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	267	269	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	271	274	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	277	282	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	287	293	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	306	320	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	321	330	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Helix	332	341	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	344	354	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	
+Q8U248	UniProtKB	Beta strand	357	365	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3TM4	

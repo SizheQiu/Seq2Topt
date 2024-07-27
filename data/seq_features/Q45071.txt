@@ -1,0 +1,51 @@
+##gff-version 3
+Q45071	UniProtKB	Signal peptide	1	26	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:10658653;Dbxref=PMID:10658653	
+Q45071	UniProtKB	Chain	27	513	.	.	.	ID=PRO_0000360828;Note=Arabinoxylan arabinofuranohydrolase	
+Q45071	UniProtKB	Domain	382	511	.	.	.	Note=CBM6;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU00523	
+Q45071	UniProtKB	Active site	50	50	.	.	.	Note=Proton acceptor;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:18980579;Dbxref=PMID:18980579	
+Q45071	UniProtKB	Active site	251	251	.	.	.	Note=Proton donor;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:18980579;Dbxref=PMID:18980579	
+Q45071	UniProtKB	Binding site	314	314	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:18980579;Dbxref=PMID:18980579	
+Q45071	UniProtKB	Binding site	385	385	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:18980579;Dbxref=PMID:18980579	
+Q45071	UniProtKB	Binding site	387	387	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:18980579;Dbxref=PMID:18980579	
+Q45071	UniProtKB	Binding site	409	409	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:18980579;Dbxref=PMID:18980579	
+Q45071	UniProtKB	Binding site	410	410	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:18980579;Dbxref=PMID:18980579	
+Q45071	UniProtKB	Binding site	506	506	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:18980579;Dbxref=PMID:18980579	
+Q45071	UniProtKB	Site	189	189	.	.	.	Note=Important for catalytic activity%2C responsible for pKa modulation of the active site Glu and correct orientation of both the proton donor and substrate;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:18980579;Dbxref=PMID:18980579	
+Q45071	UniProtKB	Beta strand	32	34	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	49	56	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	59	65	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	87	105	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	110	112	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7G	
+Q45071	UniProtKB	Helix	113	116	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	127	136	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	139	148	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	153	160	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	168	171	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	185	187	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	191	194	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	200	205	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Helix	216	220	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	225	230	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	234	244	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	249	258	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	261	268	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	270	272	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	282	290	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	296	302	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Helix	305	309	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	317	322	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	325	333	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Helix	334	340	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	348	353	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	388	394	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	396	399	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	410	413	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	420	427	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Turn	429	431	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	433	441	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	446	454	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	459	465	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	475	480	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	486	495	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	
+Q45071	UniProtKB	Beta strand	497	500	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7O	
+Q45071	UniProtKB	Beta strand	504	512	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:3C7F	

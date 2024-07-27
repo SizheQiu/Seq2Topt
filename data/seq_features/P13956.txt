@@ -1,0 +1,45 @@
+##gff-version 3
+P13956	UniProtKB	Chain	1	244	.	.	.	ID=PRO_0000101674;Note=RRNA adenine N-6-methyltransferase	
+P13956	UniProtKB	Binding site	11	11	.	.	.	.	
+P13956	UniProtKB	Binding site	13	13	.	.	.	.	
+P13956	UniProtKB	Binding site	38	38	.	.	.	.	
+P13956	UniProtKB	Binding site	59	59	.	.	.	.	
+P13956	UniProtKB	Binding site	84	84	.	.	.	.	
+P13956	UniProtKB	Binding site	101	101	.	.	.	.	
+P13956	UniProtKB	Mutagenesis	11	11	.	.	.	Note=Reduces activity about 3-fold. N->A	
+P13956	UniProtKB	Mutagenesis	101	101	.	.	.	Note=Decreases affinity for S-adenosyl-L-methionine 4-fold. Reduces activity by 90%25. N->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12946350;Dbxref=PMID:12946350	
+P13956	UniProtKB	Mutagenesis	104	104	.	.	.	Note=Loss of activity. Y->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12946350;Dbxref=PMID:12946350	
+P13956	UniProtKB	Mutagenesis	108	108	.	.	.	Note=Decreases affinity for S-adenosyl-L-methionine 8-fold. Reduces activity by 99%25. T->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12907737;Dbxref=PMID:12907737	
+P13956	UniProtKB	Mutagenesis	112	112	.	.	.	Note=Reduces activity by 90%25. R->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12907737;Dbxref=PMID:12907737	
+P13956	UniProtKB	Mutagenesis	112	112	.	.	.	Note=Decreases affinity for S-adenosyl-L-methionine 5-fold. Decreases affinity for RNA 6-fold. Reduces activity by 99%25. R->D;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12907737;Dbxref=PMID:12907737	
+P13956	UniProtKB	Mutagenesis	133	133	.	.	.	Note=Reduces activity by about 80%25. K->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12907737;Dbxref=PMID:12907737	
+P13956	UniProtKB	Mutagenesis	134	134	.	.	.	Note=Decreases affinity for S-adenosyl-L-methionine 7-fold. Decreases affinity for RNA about 4-fold. Reduces activity by over 99%25. May severely impair protein folding. R->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12907737;Dbxref=PMID:12907737	
+P13956	UniProtKB	Mutagenesis	140	140	.	.	.	Note=Decreases affinity for S-adenosyl-L-methionine 7-fold. Reduces activity by about 85%25. R->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12907737;Dbxref=PMID:12907737	
+P13956	UniProtKB	Mutagenesis	165	165	.	.	.	Note=Decreases affinity for S-adenosyl-L-methionine 6-fold. Reduces activity by about 96%25. P->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12946350;Dbxref=PMID:12946350	
+P13956	UniProtKB	Mutagenesis	166	166	.	.	.	Note=Decreases affinity for RNA about 6-fold. K->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:12946350;Dbxref=PMID:12946350	
+P13956	UniProtKB	Helix	16	23	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Beta strand	33	37	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	43	51	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Beta strand	52	58	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	62	71	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Turn	72	74	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Beta strand	77	81	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	85	87	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Beta strand	92	94	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAN	
+P13956	UniProtKB	Beta strand	97	101	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	104	106	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	107	116	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Beta strand	121	128	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	129	135	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Beta strand	138	140	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2ERC	
+P13956	UniProtKB	Helix	141	146	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Turn	147	149	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Beta strand	150	158	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	160	162	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Beta strand	163	165	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Beta strand	171	178	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	185	187	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	188	199	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	203	205	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	209	219	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	
+P13956	UniProtKB	Helix	229	242	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1QAM	

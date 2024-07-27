@@ -1,0 +1,52 @@
+##gff-version 3
+Q9UZR7	UniProtKB	Chain	1	405	.	.	.	ID=PRO_0000162053;Note=TRNA (uracil(54)-C(5))-methyltransferase	
+Q9UZR7	UniProtKB	Active site	367	367	.	.	.	Note=Nucleophile;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU01024	
+Q9UZR7	UniProtKB	Active site	399	399	.	.	.	Note=Proton acceptor;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU10015	
+Q9UZR7	UniProtKB	Binding site	61	61	.	.	.	Ontology_term=ECO:0000250;evidence=ECO:0000250	
+Q9UZR7	UniProtKB	Binding site	67	67	.	.	.	Ontology_term=ECO:0000250;evidence=ECO:0000250	
+Q9UZR7	UniProtKB	Binding site	70	70	.	.	.	Ontology_term=ECO:0000250;evidence=ECO:0000250	
+Q9UZR7	UniProtKB	Binding site	137	137	.	.	.	Ontology_term=ECO:0000250;evidence=ECO:0000250	
+Q9UZR7	UniProtKB	Binding site	252	252	.	.	.	.	
+Q9UZR7	UniProtKB	Binding site	278	278	.	.	.	.	
+Q9UZR7	UniProtKB	Binding site	283	283	.	.	.	.	
+Q9UZR7	UniProtKB	Binding site	299	300	.	.	.	.	
+Q9UZR7	UniProtKB	Binding site	326	326	.	.	.	.	
+Q9UZR7	UniProtKB	Binding site	340	340	.	.	.	.	
+Q9UZR7	UniProtKB	Beta strand	2	4	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	14	16	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	19	21	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	29	51	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Turn	71	74	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Helix	77	92	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	97	99	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	104	106	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	110	116	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	119	123	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	130	133	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Turn	138	140	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Helix	142	158	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	162	164	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Turn	165	168	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	171	179	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Turn	181	183	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	186	195	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Turn	201	203	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	207	213	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	216	218	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	224	230	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	234	238	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	241	245	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Helix	255	268	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	271	277	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Turn	280	282	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Helix	283	290	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	294	300	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Helix	302	315	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	319	323	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Turn	326	328	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	335	339	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Helix	348	357	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	360	367	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Helix	369	378	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	382	389	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	
+Q9UZR7	UniProtKB	Beta strand	399	405	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:2JJQ	

@@ -1,0 +1,40 @@
+##gff-version 3
+P0A6U5	UniProtKB	Chain	1	207	.	.	.	ID=PRO_0000184249;Note=Ribosomal RNA small subunit methyltransferase G	
+P0A6U5	UniProtKB	Binding site	73	73	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255|HAMAP-Rule:MF_00074	
+P0A6U5	UniProtKB	Binding site	78	78	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255|HAMAP-Rule:MF_00074	
+P0A6U5	UniProtKB	Binding site	124	125	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255|HAMAP-Rule:MF_00074	
+P0A6U5	UniProtKB	Binding site	139	139	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255|HAMAP-Rule:MF_00074	
+P0A6U5	UniProtKB	Mutagenesis	39	39	.	.	.	Note=Lack of activity. Low-level streptomycin resistance. Slight decrease in AdoMet affinity. N->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|Ref.8	
+P0A6U5	UniProtKB	Mutagenesis	53	53	.	.	.	Note=Decrease in activity. Very low-level streptomycin resistance. Slight decrease in AdoMet affinity. H->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	56	56	.	.	.	Note=Strong decrease in activity. Low-level streptomycin resistance. Slight decrease in AdoMet affinity. D->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	71	71	.	.	.	Note=Lack of activity. Low-level streptomycin resistance. 10-fold increase in AdoMet affinity. D->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	73	73	.	.	.	Note=Slight decrease in activity. Streptomycin-sensitive. Slight decrease in AdoMet affinity. G->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	75	75	.	.	.	Note=Lack of activity. Low-level streptomycin resistance. 24-fold decrease in AdoMet affinity. G->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	77	77	.	.	.	Note=Lack of activity. Low-level streptomycin resistance. 10-fold decrease in AdoMet affinity. G->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	79	79	.	.	.	Note=Lack of activity. Low-level streptomycin resistance. 11-fold decrease in AdoMet affinity. P->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	96	96	.	.	.	Note=Lack of activity. Low-level streptomycin resistance. D->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	100	101	.	.	.	Note=Lack of activity. Low-level streptomycin resistance. KR->AA;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	123	123	.	.	.	Note=Slight decrease in activity. Streptomycin-sensitive. R->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	139	139	.	.	.	Note=Lack of activity. Low-level streptomycin resistance. No change in AdoMet affinity. R->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	139	139	.	.	.	Note=Decrease in activity. Very low-level streptomycin resistance. R->K;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	165	165	.	.	.	Note=Slight decrease in activity. Streptomycin-sensitive. K->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Mutagenesis	197	197	.	.	.	Note=Strong decrease in activity. Low-level streptomycin resistance. R->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22337945;Dbxref=PMID:22337945	
+P0A6U5	UniProtKB	Helix	2	10	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Turn	11	13	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Helix	18	34	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Helix	49	60	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Helix	61	63	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Beta strand	66	72	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Turn	75	79	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Helix	80	86	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Beta strand	90	97	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Helix	99	111	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Beta strand	115	121	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Turn	124	126	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Beta strand	133	137	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Beta strand	141	143	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Helix	144	151	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Beta strand	154	167	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Helix	170	174	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Beta strand	180	189	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
+P0A6U5	UniProtKB	Beta strand	196	204	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1JSX	
