@@ -1,0 +1,45 @@
+##gff-version 3
+P45687	UniProtKB	Chain	1	444	.	.	.	ID=PRO_0000195814;Note=Xylose isomerase	
+P45687	UniProtKB	Active site	101	101	.	.	.	.	
+P45687	UniProtKB	Active site	104	104	.	.	.	Ontology_term=ECO:0000250;evidence=ECO:0000250	
+P45687	UniProtKB	Binding site	232	232	.	.	.	.	
+P45687	UniProtKB	Binding site	268	268	.	.	.	.	
+P45687	UniProtKB	Binding site	268	268	.	.	.	.	
+P45687	UniProtKB	Binding site	271	271	.	.	.	.	
+P45687	UniProtKB	Binding site	296	296	.	.	.	.	
+P45687	UniProtKB	Binding site	307	307	.	.	.	.	
+P45687	UniProtKB	Binding site	309	309	.	.	.	.	
+P45687	UniProtKB	Binding site	339	339	.	.	.	.	
+P45687	UniProtKB	Beta strand	23	26	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	38	42	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	45	47	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	48	51	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	68	70	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	75	93	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	97	101	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	102	105	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	112	132	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	136	141	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	145	147	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	148	150	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	160	179	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	183	187	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	192	195	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	202	222	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	227	231	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	237	244	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	247	256	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	260	262	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	263	268	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	269	274	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	279	288	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	292	296	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	304	306	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	315	328	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Beta strand	336	338	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	349	376	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	378	386	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	388	390	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	393	400	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	405	412	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	
+P45687	UniProtKB	Helix	425	441	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:1A0E	

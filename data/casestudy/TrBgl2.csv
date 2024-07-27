@@ -1,0 +1,6 @@
+﻿uniprot_id,mutation,topt,reference
+O93785,WT,40,doi:10.1093/protein/gzs073
+O93785,L167W,50,doi:10.1093/protein/gzs073
+O93785,P172L,40,doi:10.1093/protein/gzs073
+O93785,F250A,40,doi:10.1093/protein/gzs073
+O93785,P172L/F250A,50,doi:10.1093/protein/gzs073

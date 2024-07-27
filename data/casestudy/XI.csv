@@ -1,0 +1,9 @@
+﻿uniprot_id,mutation,organism,topt,note,reference
+P19148,WT,TT,84,WT,https://doi.org/10.1093/protein/13.4.259
+P19148,Q59P,TT,84,Gln58Pro,https://doi.org/10.1093/protein/13.4.259
+P19148,A63P,TT,71,Ala62Pro,https://doi.org/10.1093/protein/13.4.259
+P19148,Q59P/A63P,TT,73,Gln58Pro/Ala62Pro,https://doi.org/10.1093/protein/13.4.259
+P45687,WT,TN,97,WT,https://doi.org/10.1093/protein/13.4.259
+P45687,P59Q,TN,88,Pro58Gln,https://doi.org/10.1093/protein/13.4.259
+P45687,P63A,TN,88,Pro62Ala,https://doi.org/10.1093/protein/13.4.259
+P45687,P59Q/P63A,TN,86,Pro58Gln/Pro62Ala,https://doi.org/10.1093/protein/13.4.259
