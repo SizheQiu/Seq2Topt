@@ -27,7 +27,7 @@ if __name__ == "__main__":
     parser.add_argument('--output', required = True)
     args = parser.parse_args()
     
-    tm_pth = '../data/model_pth/';#TODO
+    tm_pth = '../data/model_pth/model_Tm_r2=0.682152.pth';
     params = load_pickle( '../data/hyparams/default.pkl' );
     if torch.cuda.is_available():
         device = torch.device('cuda')
