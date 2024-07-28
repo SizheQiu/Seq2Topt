@@ -1,4 +1,3 @@
-##gff-version 3
 Q9UZR7	UniProtKB	Chain	1	405	.	.	.	ID=PRO_0000162053;Note=TRNA (uracil(54)-C(5))-methyltransferase	
 Q9UZR7	UniProtKB	Active site	367	367	.	.	.	Note=Nucleophile;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU01024	
 Q9UZR7	UniProtKB	Active site	399	399	.	.	.	Note=Proton acceptor;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU10015	

@@ -1,4 +1,3 @@
-##gff-version 3
 Q45071	UniProtKB	Signal peptide	1	26	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:10658653;Dbxref=PMID:10658653	
 Q45071	UniProtKB	Chain	27	513	.	.	.	ID=PRO_0000360828;Note=Arabinoxylan arabinofuranohydrolase	
 Q45071	UniProtKB	Domain	382	511	.	.	.	Note=CBM6;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU00523	

@@ -1,4 +1,3 @@
-##gff-version 3
 Q9XBQ3	UniProtKB	Initiator methionine	1	1	.	.	.	Note=Removed;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:7887599;Dbxref=PMID:7887599	
 Q9XBQ3	UniProtKB	Chain	2	502	.	.	.	ID=PRO_0000057700;Note=Intracellular exo-alpha-(1->5)-L-arabinofuranosidase	
 Q9XBQ3	UniProtKB	Active site	175	175	.	.	.	Note=Proton donor/acceptor;Ontology_term=ECO:0000305,ECO:0000305,ECO:0000305;evidence=ECO:0000305|PubMed:11943144,ECO:0000305|PubMed:12221104,ECO:0000305|PubMed:14517232;Dbxref=PMID:11943144,PMID:12221104,PMID:14517232	

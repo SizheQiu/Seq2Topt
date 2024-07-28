@@ -1,4 +1,3 @@
-##gff-version 3
 P13956	UniProtKB	Chain	1	244	.	.	.	ID=PRO_0000101674;Note=RRNA adenine N-6-methyltransferase	
 P13956	UniProtKB	Binding site	11	11	.	.	.	.	
 P13956	UniProtKB	Binding site	13	13	.	.	.	.	
