@@ -1,0 +1,5 @@
+﻿uniprot_id,organism,mutation,topt,reference
+A0AAI7ZJW1,Bifidobacterium breve,WT,50,https://doi.org/10.1007/s00253-022-12030-w
+A0AAI7ZJW1,Bifidobacterium breve,P134C/L343F,45,https://doi.org/10.1007/s00253-022-12030-w
+A0AAI7ZJW1,Bifidobacterium breve,L341V/L343F,55,https://doi.org/10.1007/s00253-022-12030-w
+A0AAI7ZJW1,Bifidobacterium breve,P134C/L341V/L343F,50,https://doi.org/10.1007/s00253-022-12030-w

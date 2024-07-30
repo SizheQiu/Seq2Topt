@@ -11,11 +11,11 @@ Tm data obtained from https://github.com/liimy1/DeepTM/tree/master/Data.<br>
 ```
 python seq2topt.py --input [input.csv] --output [output file name]
 ```
-The same for seq2tm.py and seq2pHopt.py in `/code`.
+The same for seq2tm.py and seq2pHopt.py in `/code`.<br>
 3. Hyperparameters and model pth files: <br>
-- Seq2Topt: `/data/hyparams/best_topt_param.pkl` and `/data/model_pth/model_topt_r2test=0.5002.pth`<br>
-- Seq2Tm: `/data/hyparams/default.pkl` and `../data/model_pth/model_Tm_r2=0.682152.pth` <br>
-- Seq2pHopt: `/data/hyparams/default.pkl` and `../data/model_pth/model_pHopt_rmse=0.064849.pth`<br>
+	- Seq2Topt: `/data/hyparams/best_topt_param.pkl` and `/data/model_pth/model_topt_r2test=0.5002.pth`<br>
+	- Seq2Tm: `/data/hyparams/default.pkl` and `../data/model_pth/model_Tm_r2=0.682152.pth` <br>
+	- Seq2pHopt: `/data/hyparams/default.pkl` and `../data/model_pth/model_pHopt_rmse=0.064849.pth`<br>
 4. Feel free to use `/code/model.py` to develop other predictive models for proteins. <br>
 ## Workflow:
 1. Model evaluation: `/code/Model_evaluation.ipynb`
