@@ -5,9 +5,13 @@ A deep learning model of enzyme optimal temperature.
 sequence_ogt_topt.csv obtained from https://github.com/jafetgado/tomer.<br>
 pH opt data obtained from EpHod: https://zenodo.org/records/8011249.<br>
 Tm data obtained from https://github.com/liimy1/DeepTM/tree/master/Data.<br>
+## Accuracy:
+1. Seq2Topt: RMSE = 13.3℃ and R2=0.48<br>
+2. Seq2Tm: RMSE=7.57℃ and R2=0.64<br>
+3. Seq2pHopt: RMSE=0.92 and R2=0.37<br>
 ## How to use:
 1. Prepare the input file: a CSV file containing a column "sequence" for protein sequences.<br>
-2. Enter `/code` and run prediction: <br>
+2. Enter `/code` directory and run prediction: <br>
 ```
 python seq2topt.py --input [input.csv] --output [output file name]
 ```
