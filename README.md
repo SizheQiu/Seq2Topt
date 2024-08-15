@@ -32,3 +32,4 @@ The same for seq2tm.py and seq2pHopt.py in `/code`.<br>
 3.Scikit-learn: https://scikit-learn.org/<br>
 4.Seaborn statistical data visualization:https://seaborn.pydata.org/index.html<br>
 ## Citation
+Qiu, S., Hu, B., Zhao, J., Xu, W., Yang, A. (2024). Seq2Topt: A Sequence-Based Deep Learning Predictor of Enzyme Optimal Temperature. doi:10.1101/2024.08.12.607600 

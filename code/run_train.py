@@ -14,25 +14,9 @@ import warnings
 import random
 import esm
 
-
-# def load_batch(batch_data, esm2_model,esm2_batch_converter, device):
-#     ids, seqs, ssfs, targets = batch_data
-#     input_data = [(ids[i], seqs[i]) for i in range(len(ids))]
-#     batch_labels, batch_strs, batch_tokens = esm2_batch_converter(input_data)
-#     batch_tokens = batch_tokens.to(device=device, non_blocking=True)
-#     with torch.no_grad():
-#         emb = esm2_model(batch_tokens, repr_layers=[33], return_contacts=False)
-#     emb = emb["representations"][33]
-#     emb = emb.transpose(1,2) # (batch, features, seqlen)
-#     emb = emb.to(device)
-    
-#     target_values = torch.FloatTensor( np.array( [ np.array([v]) for v in targets ] ) )
-#     target_values = target_values.to(device)
-    
-#     ssf_features = torch.FloatTensor( ssfs )
-#     ssf_features = ssf_features.to(device)
-    
-#     return emb, ssf_features, target_values
+'''
+Run the training process.
+'''
 
 
 def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
@@ -91,10 +75,10 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         train_result['rmse_test'].append(rmse_test); train_result['r2_test'].append(r2_test); train_result['mae_test'].append(mae_test);
         train_result['rmse_dev'].append(rmse_dev); train_result['r2_dev'].append(r2_dev); train_result['mae_dev'].append(mae_dev);
         
-        if rmse_test < 0.065:
-            print('Best model found at epoch=' + str(epoch) + '!')
-            best_model_pth = '../data/model_pth/model_pHopt_rmse=' +str(rmse_test)+'.pth'
-            torch.save( model.state_dict(), best_model_pth)
+#         if rmse_test < 0.065:
+#             print('Best model found at epoch=' + str(epoch) + '!')
+#             best_model_pth = '../data/model_pth/model_pHopt_rmse=' +str(rmse_test)+'.pth'
+#             torch.save( model.state_dict(), best_model_pth)
         
         if epoch%5 == 0:
             print('epoch: '+str(epoch)+'/'+ str(num_epochs) +';  rmse test: ' + str(rmse_test) + '; r2 test: ' + str(r2_test) )
