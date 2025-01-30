@@ -17,6 +17,16 @@ import esm
 '''
 Run the training process.
 '''
+def set_random_seeds(seed):
+    np.random.seed(seed)
+    random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+    # Ensure deterministic behavior
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 
 
 def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
@@ -143,12 +153,13 @@ if __name__ == "__main__":
     parser.add_argument('--lr_decay', default = 0.5, type=float )
     parser.add_argument('--decay_interval', default = 10, type=int )
     parser.add_argument('--num_epoch', default = 30, type=int )
-    parser.add_argument('--param_dict_pkl', default = '../data/hyparams/default.pkl')
     args = parser.parse_args()
     
-    train_path, test_path, lr, batch_size, lr_decay, decay_interval, param_dict_pkl = \
+    set_random_seeds(0);
+    
+    train_path, test_path, lr, batch_size, lr_decay, decay_interval = \
             str(args.train_path), str(args.test_path), float(args.lr), int(args.batch), \
-            float(args.lr_decay), int(args.decay_interval) , str( args.param_dict_pkl )
+            float(args.lr_decay), int(args.decay_interval)
     
     task = str(args.task)
     print('The task is '+ task+'!')
@@ -172,26 +183,23 @@ if __name__ == "__main__":
     
     
     num_epochs = int( args.num_epoch )
-    param_dict = load_pickle(param_dict_pkl)
-    
-    window, dropout, n_head, n_RD = \
-            param_dict['window'],param_dict['dropout'],param_dict['n_head'],param_dict['n_RD']
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     
     emb_dim= 320  # esm2_t6_8M_UR50D
-    M = MultiAttModel( emb_dim, device, window, n_head, dropout, n_RD)
-    M.to(device);
+    n_head = 4; n_RD = 4;
+    for win_size in [3,5,7]:
+        M = MultiAttModel( emb_dim, win_size, n_head, n_RD)
+        M.to(device);
     
-    train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
-                   decay_interval,  num_epochs )
-    train_result['Epoch'] = list(np.arange(1,num_epochs+1))
-    result_pd = pd.DataFrame( train_result )
-    output_path = os.path.join(  '../data/performances/',task +'_' +\
-                               os.path.basename(param_dict_pkl).split('.')[0] + '_lr=' + str(lr) + '.csv' )
+        train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
+                       decay_interval,  num_epochs )
+        train_result['Epoch'] = list(np.arange(1,num_epochs+1))
+        result_pd = pd.DataFrame( train_result )
+        output_path = os.path.join(  '../data/performances/',task +'_window'+str(win_size)+'.csv' )
     
-    result_pd.to_csv(output_path,index=None)
+        result_pd.to_csv(output_path,index=None)
     
-    print('Done.')
+        print('Done.')
     
     
     
