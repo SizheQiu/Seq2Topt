@@ -15,15 +15,13 @@ import random
 import esm
 
 class ModelAtt(nn.Module):
-    def __init__(self, dim, device, window, n_head, dropout, n_RD):
+    def __init__(self, dim, window, n_head, n_RD):
         super(ModelAtt, self).__init__()
         self.n_RD = n_RD
         self.n_head = n_head
         self.cnn_v = nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window)
         self.W_cnns = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(n_head)])
-        self.batchnorm = nn.BatchNorm1d(2*n_head*dim)
-        self.dropout = nn.Dropout(dropout)
-        self.RDs = nn.ModuleList([RDBlock(2*n_head*dim, dropout) for _ in range(n_RD)])  
+        self.RDs = nn.ModuleList([RDBlock(2*n_head*dim) for _ in range(n_RD)])  
         self.output = nn.Linear(2*n_head*dim, 1)
         
     def forward(self, emb):
@@ -41,11 +39,8 @@ class ModelAtt(nn.Module):
                 cat_xmax = torch.cat([cat_xmax, x_max],dim=1)
             w_atts.append( torch.mean(weights,dim=1).cpu().detach().numpy() )
             
-        avg_ws = []    
-        for k in range(len(w_atts[0])):
-            avg_watt = (w_atts[0][k]+w_atts[1][k]+w_atts[2][k]+w_atts[3][k])/4
-            avg_ws.append( avg_watt )
-            
+        w_atts = np.array(w_atts)
+        avg_ws = np.mean( w_atts, axis=0)  
         return avg_ws
     
     
@@ -58,20 +53,18 @@ if __name__ == "__main__":
     parser.add_argument('--input', required = True)
     parser.add_argument('--output', required = True)
     args = parser.parse_args()
-    topt_pth = '../data/model_pth/model_topt_r2test=0.5002.pth';
-    params = load_pickle( '../data/hyparams/best_topt_param.pkl' );
+    topt_pth = '../../large_model_pth/model_topt_window=3_r2=0.539321.pth';
+    
     if torch.cuda.is_available():
         device = torch.device('cuda')
         print('GPU!')
     else:
         device = torch.device('cpu')
         print('CPU!')
-    emb_dim= 320
-    window, dropout, n_head, n_RD = \
-            params['window'],params['dropout'],params['n_head'],params['n_RD']
+    emb_dim= 320; window=3; n_head = 4; n_RD = 4;
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     
-    model = ModelAtt( emb_dim, device, window, n_head, dropout, n_RD)
+    model = ModelAtt( emb_dim, window, n_head, n_RD)
     model.to(device);
     model.load_state_dict(torch.load( topt_pth, map_location=device  ))
     model.eval()
@@ -97,9 +90,10 @@ if __name__ == "__main__":
         emb = emb.to(device)
         with torch.no_grad():
             avg_ws = model( emb )
-        avg_weights += avg_ws
+        avg_weights += list(avg_ws)
+
     
-    
+    avg_weights = np.array( avg_weights )
     dump_pickle( avg_weights, str( args.output ) +'.pkl' )
     print('Task '+ str(args.input)+' completed!')
     

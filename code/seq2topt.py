@@ -27,8 +27,7 @@ if __name__ == "__main__":
     parser.add_argument('--output', required = True)
     args = parser.parse_args()
     
-    topt_pth = '../data/model_pth/model_topt_r2test=0.5002.pth';
-    params = load_pickle( '../data/hyparams/best_topt_param.pkl' );
+    topt_pth = '../../large_model_pth/model_topt_window=3_r2=0.539321.pth';
     if torch.cuda.is_available():
         device = torch.device('cuda')
         print('GPU!')
@@ -36,12 +35,10 @@ if __name__ == "__main__":
         device = torch.device('cpu')
         print('CPU!')
         
-    emb_dim= 320
-    window, dropout, n_head, n_RD = \
-            params['window'],params['dropout'],params['n_head'],params['n_RD']
+    emb_dim= 320; window=3; n_head = 4; n_RD = 4;
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     
-    model = MultiAttModel( emb_dim, device, window, n_head, dropout, n_RD)
+    model = MultiAttModel( emb_dim, window, n_head, n_RD)
     model.to(device);
     model.load_state_dict(torch.load( topt_pth, map_location=device  ))
     model.eval()
@@ -70,7 +67,8 @@ if __name__ == "__main__":
             preds = model( emb )
         predictions += preds.cpu().detach().numpy().reshape(-1).tolist()
         
-    pred_topts = [float(v*120) for v in predictions ]
+    Topt_max = 120;   
+    pred_topts = [float(v*Topt_max) for v in predictions ]
     result_pd = pd.DataFrame(zip(list(input_data.index), list(input_data['sequence']), pred_topts),\
                              columns=['id','sequence','pred_topt'])
     
