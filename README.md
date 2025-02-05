@@ -22,7 +22,7 @@ Tm data obtained from https://github.com/liimy1/DeepTM/tree/master/Data.<br>
 ## Dependency:
 1.Pytorch: https://pytorch.org/<br>
 2.ESM: https://github.com/facebookresearch/esm<br>
-3.ProGen2: https://github.com/salesforce/progen
+3.ProGen2: https://github.com/salesforce/progen<br>
 4.Scikit-learn: https://scikit-learn.org/<br>
 5.Seaborn statistical data visualization:https://seaborn.pydata.org/index.html<br>
 ## Citation
