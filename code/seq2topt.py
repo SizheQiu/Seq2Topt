@@ -27,7 +27,7 @@ if __name__ == "__main__":
     parser.add_argument('--output', required = True)
     args = parser.parse_args()
     
-    topt_pth = '../../large_model_pth/model_topt_window=3_r2=0.539321.pth';
+    topt_pth = '../../large_model_pth/model_topt_window=3_r2=0.57.pth';
     if torch.cuda.is_available():
         device = torch.device('cuda')
         print('GPU!')

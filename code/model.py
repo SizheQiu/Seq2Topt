@@ -7,12 +7,10 @@ class RDBlock(nn.Module):
     def __init__(self, dim ):
         super(RDBlock, self).__init__()
         self.dense = nn.Linear(dim, dim)
-        #self.dropout = nn.Dropout(dropout)
         
     def forward(self, x):
         x0 = x
         x = F.leaky_relu( self.dense(x) )       
-        #x = self.dropout(x)
         x = x0 + x
         return x
 
@@ -25,8 +23,6 @@ class MultiAttModel(nn.Module):
         self.n_head = n_head
         self.cnn_v = nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window)
         self.W_cnns = nn.ModuleList([ nn.Conv1d(dim, dim, kernel_size=2*window+1, padding=window) for _ in range(n_head)])
-#         self.batchnorm = nn.BatchNorm1d(2*n_head*dim)
-#         self.dropout = nn.Dropout(dropout)
         self.RDs = nn.ModuleList([RDBlock(2*n_head*dim) for _ in range(n_RD)])  
         self.output = nn.Linear(2*n_head*dim, 1)
         
@@ -44,8 +40,6 @@ class MultiAttModel(nn.Module):
                 cat_xmax = torch.cat([cat_xmax, x_max],dim=1)
                 
         cat_f = torch.cat([ cat_xsum, cat_xmax ], dim=1) # Concat features for regression
-#         cat_f = self.batchnorm(cat_f)
-#         cat_f = self.dropout(cat_f)
         for j in range(self.n_RD):
             cat_f = self.RDs[j](cat_f)
             

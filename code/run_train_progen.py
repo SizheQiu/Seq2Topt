@@ -10,9 +10,11 @@ import torch.nn.functional as F
 from functions import *
 from model import MultiAttModel
 import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "4"
+
 import warnings
 import random
-from transformers import AutoModelForCausalLM
+from transformers import AutoModelForCausalLM, AutoTokenizer
 from tokenizers import Tokenizer
 
 '''
@@ -40,19 +42,18 @@ def split_data( data, ratio=0.1):
 
 def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay, decay_interval, num_epochs ):
     #Load progen2
-    progen_model = AutoModelForCausalLM.from_pretrained("hugohrban/progen2-small", trust_remote_code=True)
+    progen_model = AutoModelForCausalLM.from_pretrained("/usr/data/Seq2Topt-main/progen2-small", trust_remote_code=True)
     progen_model.to(device)
-    tokenizer = Tokenizer.from_pretrained("hugohrban/progen2-small")
-    tokenizer.no_padding()
-    
+    tokenizer = AutoTokenizer.from_pretrained("/usr/data/Seq2Topt-main/progen2-small", trust_remote_code=True)
+    tokenizer.pad_token = tokenizer.eos_token  
+
     criterion = F.mse_loss
     optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=0, amsgrad=True)
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size= decay_interval, gamma=lr_decay)
     idx = np.arange(len(train_pack[0]))
     
     min_size = 4
-    if batch_size > min_size:
-        div_min = int(batch_size / min_size)
+    div_min = max(1, batch_size // min_size)
         
     train_result = {'rmse_train':[],'r2_train':[],'mae_train':[],'rmse_test':[],'r2_test':[],'mae_test':[],\
                    'rmse_dev':[],'r2_dev':[],'mae_dev':[]}
@@ -64,12 +65,17 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
         for i in range(math.ceil( len(train_pack[0]) / min_size )):
             batch_data = [train_pack[di][idx[ i* min_size: (i + 1) * min_size]] for di in range(len(train_pack))]
             ids, seqs, y = batch_data
-            batch_tokens = tokenizer.encode_batch(seqs)
-            input_ids = torch.tensor([token.ids for token in batch_tokens ]).to(device)
-            
+            seqs = list(map(str, seqs))  
+            batch_tokens = tokenizer(
+                seqs, padding="max_length",
+                truncation=True, max_length=1024, return_tensors="pt").to(device)
+
+            input_ids = batch_tokens["input_ids"]
+            attention_mask = batch_tokens["attention_mask"]
+
             with torch.no_grad():
-                emb = progen_model(input_ids)
-            emb = emb.logits
+                outputs = progen_model(input_ids, attention_mask=attention_mask, output_hidden_states=True)
+                emb = outputs.hidden_states[-1]  # last layer hidden state
             emb = emb.transpose(1,2) # (batch, features, seqlen)
             emb = emb.to(device)
             
@@ -85,7 +91,8 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
                 optimizer.step()
                 optimizer.zero_grad()
                 
-        predictions = np.array(predictions); targets = np.array(targets);
+        predictions = np.array(predictions)
+        targets = np.array(targets)
         train_result['rmse_train'].append( get_rmse( targets, predictions) )
         train_result['r2_train'].append( get_r2( targets, predictions) )
         train_result['mae_train'].append( get_mae( targets, predictions) )
@@ -109,21 +116,27 @@ def train_eval(model, train_pack, test_pack , dev_pack, device, lr, batch_size, 
     return train_result
 
 def test(model, test_pack,  batch_size, device ):
-    progen_model = AutoModelForCausalLM.from_pretrained("hugohrban/progen2-small", trust_remote_code=True)
+    progen_model = AutoModelForCausalLM.from_pretrained("/usr/data/Seq2Topt-main/progen2-small", trust_remote_code=True)
+
     progen_model.to(device)
-    tokenizer = Tokenizer.from_pretrained("hugohrban/progen2-small")
-    tokenizer.no_padding()
+    tokenizer = AutoTokenizer.from_pretrained("/usr/data/Seq2Topt-main/progen2-small", trust_remote_code=True)
+    tokenizer.pad_token = tokenizer.eos_token  
     
     model.eval()
     predictions, target_values = [],[]
     for i in range(math.ceil( len(test_pack[0]) / batch_size )):
         batch_data = [test_pack[di][i * batch_size: (i + 1) * batch_size] for di in range(len(test_pack))]
         ids, seqs, y = batch_data
-        batch_tokens = tokenizer.encode_batch(seqs)
-        input_ids = torch.tensor([token.ids for token in batch_tokens ]).to(device)
+        seqs = list(map(str, seqs))  
+        batch_tokens = tokenizer(
+            seqs, padding="max_length", truncation=True,
+            max_length=1024, return_tensors="pt" ).to(device)
+
+        input_ids = batch_tokens["input_ids"]
+        attention_mask = batch_tokens["attention_mask"]
         with torch.no_grad():
-            emb = progen_model(input_ids)
-        emb = emb.logits
+            outputs = progen_model(input_ids, attention_mask=attention_mask, output_hidden_states=True)
+            emb = outputs.hidden_states[-1]
         emb = emb.transpose(1,2) # (batch, features, seqlen)
         emb = emb.to(device)
         
@@ -143,17 +156,20 @@ def test(model, test_pack,  batch_size, device ):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--task',choices=['topt','tm','pHopt'], required = True)
-    parser.add_argument('--train_path', required = True)
-    parser.add_argument('--test_path', required = True)
+    parser.add_argument('--task',choices=['topt','tm','pHopt'], default='topt')
+    parser.add_argument('--train_path', default='/usr/data/PredOT-main/PredOT-main-1/PredOT-main/data/Topt/train_os.csv')
+    parser.add_argument('--test_path', default='/usr/data/PredOT-main/PredOT-main-1/PredOT-main/data/Topt/test.csv')
+
     parser.add_argument('--lr', default = 0.0005, type=float )
     parser.add_argument('--batch', default = 32 , type=int )
     parser.add_argument('--lr_decay', default = 0.5, type=float )
     parser.add_argument('--decay_interval', default = 10, type=int )
-    parser.add_argument('--num_epoch', default = 30, type=int )
+    parser.add_argument('--num_epoch', default = 30, type=int ) #30
+    parser.add_argument('--param_dict_pkl', default = '/usr/data/PredOT-main/PredOT-main-1/PredOT-main/data/hyparams/default.pkl')
+
     args = parser.parse_args()
     
-    set_random_seeds(0);
+    set_random_seeds(0)
     
     train_path, test_path, lr, batch_size, lr_decay, decay_interval = \
             str(args.train_path), str(args.test_path), float(args.lr), int(args.batch), \
@@ -166,9 +182,9 @@ if __name__ == "__main__":
     test_data = pd.read_csv(test_path)
     rparams = {'topt':(0,120),'tm':(0,100),'pHopt':(0,14)}
     train_pack = [np.array(train_data.index), np.array(train_data.sequence), \
-              np.array( rescale_targets(list(train_data[task]), rparams[task][1], rparams[task][0])) ];
+              np.array( rescale_targets(list(train_data[task]), rparams[task][1], rparams[task][0])) ]
     test_pack = [np.array(test_data.index), np.array(test_data.sequence), \
-             np.array( rescale_targets(list(test_data[task]), rparams[task][1], rparams[task][0])) ];
+             np.array( rescale_targets(list(test_data[task]), rparams[task][1], rparams[task][0])) ]
 
     train_pack, dev_pack = split_data( train_pack, 0.1)
     
@@ -183,21 +199,22 @@ if __name__ == "__main__":
     num_epochs = int( args.num_epoch )
     warnings.filterwarnings("ignore", message="Setting attributes on ParameterList is not supported.")
     
-    emb_dim= 32  # progen2
+    emb_dim= 1024  # progen2
     n_head = 4; n_RD = 4;
-    for win_size in [3,5,7]:
-        M = MultiAttModel( emb_dim, win_size, n_head, n_RD)
-        M.to(device);
-    
-        train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
-                       decay_interval,  num_epochs )
-        train_result['Epoch'] = list(np.arange(1,num_epochs+1))
-        result_pd = pd.DataFrame( train_result )
-        output_path = os.path.join(  '../data/performances/',task +'_progen2_window'+str(win_size)+'.csv' )
-    
-        result_pd.to_csv(output_path,index=None)
-    
-        print('Done.')
+    # for win_size in [3,5,7]:
+    win_size = 7
+    M = MultiAttModel( emb_dim, win_size, n_head, n_RD)
+    M.to(device)
+
+    train_result = train_eval( M , train_pack, test_pack , dev_pack, device, lr, batch_size, lr_decay,\
+                    decay_interval,  num_epochs )
+    train_result['Epoch'] = list(np.arange(1,num_epochs+1))
+    result_pd = pd.DataFrame( train_result )
+    output_path = os.path.join(  '/usr/data/Seq2Topt-main/data/output',task +'_progen2_window'+str(win_size)+'.csv' )
+
+    result_pd.to_csv(output_path,index=None)
+
+    print('Done.')
 
 
 

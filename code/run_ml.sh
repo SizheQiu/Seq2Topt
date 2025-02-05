@@ -9,13 +9,14 @@
 module load PyTorch/1.12.0-foss-2022a-CUDA-11.7.0
 
 
-# start_time=$(date +%s)
-# python run_train.py --task topt --train_path ../data/Topt/train_os.csv --test_path ../data/Topt/test.csv \
-#             --param_dict_pkl ../data/hyparams/best_topt_param.pkl
-# end_time=$(date +%s)
-# elapsed=$(( end_time - start_time ))
-# echo $elapsed
-# echo "Topt Done!"
+echo "Hyp-params opt!"
+start_time=$(date +%s)
+
+python run_train.py --task topt --train_path ../data/Topt/train_os.csv --test_path ../data/Topt/test.csv
+    
+end_time=$(date +%s)
+elapsed=$(( end_time - start_time ))
+echo $elapsed
 
 
 # start_time=$(date +%s)
@@ -32,14 +33,6 @@ module load PyTorch/1.12.0-foss-2022a-CUDA-11.7.0
 # echo $elapsed
 # echo "Tm Done!"
 
-echo "Hyp-params opt!"
-start_time=$(date +%s)
-
-python run_train.py --task topt --train_path ../data/Topt/train_os.csv --test_path ../data/Topt/test.csv
-    
-end_time=$(date +%s)
-elapsed=$(( end_time - start_time ))
-echo $elapsed
 
 
 
