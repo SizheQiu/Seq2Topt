@@ -10,7 +10,7 @@ Tm data obtained from https://github.com/liimy1/DeepTM/tree/master/Data.<br>
 2. Seq2Tm: RMSE=7.57℃ and R2=0.64 <br>
 3. Seq2pHopt: RMSE=0.88 and R2=0.42 <br>
 ## How to use:
-1. Download model weights from Release of this repo.
+1. Download model weights from [Release](https://github.com/SizheQiu/Seq2Topt/releases/tag/v1.0.0) of this repo.
 2. Follow the [tutorial notebook](https://github.com/SizheQiu/Seq2Topt/blob/main/code/Tutorial.ipynb) to try Seq2Topt model.
 3. Feel free to use `/code/model.py` to develop other predictive models for proteins. <br>
 ## Workflow:
