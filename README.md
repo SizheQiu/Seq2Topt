@@ -27,4 +27,4 @@ Tm data obtained from https://github.com/liimy1/DeepTM/tree/master/Data.<br>
 4.Scikit-learn: https://scikit-learn.org/<br>
 5.Seaborn statistical data visualization:https://seaborn.pydata.org/index.html<br>
 ## Citation
-Qiu, S., Hu, B., Zhao, J., Xu, W., Yang, A. (2024). Seq2Topt: A Sequence-Based Deep Learning Predictor of Enzyme Optimal Temperature. doi:10.1101/2024.08.12.607600 
+1.	Qiu, S., Hu, B., Zhao, J., Xu, W., Yang, A. (2024). Seq2Topt: A Sequence-Based Deep Learning Predictor of Enzyme Optimal Temperature. Briefings in Bioinformatics, 26(2). https://doi.org/10.1093/bib/bbaf114
